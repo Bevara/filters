@@ -1,0 +1,8 @@
+{
+    "name": "rfsrt",
+    "description": "SRT reframer",
+    "help": "This filter rewrites unframed SRT to TX3G / QT Timed Text (binary format)",
+    "support": [
+        "video"
+    ]
+}

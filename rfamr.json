@@ -1,0 +1,8 @@
+{
+    "name": "rfamr",
+    "description": "AMR/EVRC reframer",
+    "help": "This filter parses AMR, AMR Wideband, EVRC and SMV files/data and outputs corresponding audio PID and frames.",
+    "support": [
+        "audio"
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "name": "restamp",
+    "description": "Packet timestamp rewriter",
+    "help": "This filter rewrites timing (offsets and rate) of packets.",
+    "support": [
+        "image",
+        "video",
+        "audio"
+    ]
+}

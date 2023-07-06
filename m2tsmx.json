@@ -1,0 +1,8 @@
+{
+    "name": "m2tsmx",
+    "description": "MPEG-2 TS multiplexer",
+    "help": "This filter multiplexes one or more input PIDs into a MPEG-2 Transport Stream multiplex.",
+    "support": [
+        "video"
+    ]
+}

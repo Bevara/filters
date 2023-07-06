@@ -1,0 +1,8 @@
+{
+    "name": "rfprores",
+    "description": "ProRes reframer",
+    "help": "This filter parses ProRes raw files/data and outputs corresponding visual PID and frames.",
+    "support": [
+        "video"
+    ]
+}

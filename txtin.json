@@ -1,0 +1,8 @@
+{
+    "name": "txtin",
+    "description": "Subtitle loader",
+    "help": "This filter reads subtitle data from input PID to produce subtitle frames on a single PID.",
+    "support": [
+        "video"
+    ]
+}

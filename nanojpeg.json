@@ -1,0 +1,8 @@
+{
+    "name": "nanojpeg",
+    "description": "nanojpeg decoder",
+    "help": "This filter decodes nanojpeg streams through nanojpeg library.",
+    "support": [
+        "image"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "name": "bsrw",
+    "description": "Compressed bitstream rewriter",
+    "help": "This filter rewrites some metadata of various bitstream formats",
+    "support": [
+        "video"
+    ]
+}

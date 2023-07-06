@@ -1,0 +1,8 @@
+{
+    "name": "rfimg",
+    "description": "JPG/J2K/PNG/BMP reframer",
+    "help": "This filter parses JPG/J2K/PNG/BMP files/data and outputs corresponding visual PID and frames.",
+    "support": [
+        "image"
+    ]
+}

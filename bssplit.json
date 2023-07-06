@@ -1,0 +1,8 @@
+{
+    "name": "bssplit",
+    "description": "Compressed layered bitstream splitter",
+    "help": "This filter splits input stream by layers and sublayers",
+    "support": [
+        "video"
+    ]
+}

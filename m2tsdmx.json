@@ -1,0 +1,8 @@
+{
+    "name": "m2tsdmx",
+    "description": "MPEG-2 TS demultiplexer",
+    "help": "This filter demultiplexes MPEG-2 Transport Stream files/data into a set of media PIDs and frames.",
+    "support": [
+        "video"
+    ]
+}

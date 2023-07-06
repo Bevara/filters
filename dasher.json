@@ -1,0 +1,8 @@
+{
+    "name": "dasher",
+    "description": "DASH and HLS segmenter",
+    "help": "This filter provides segmentation and manifest generation for MPEG-DASH and HLS formats.",
+    "support": [
+        "video"
+    ]
+}

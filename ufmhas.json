@@ -1,0 +1,8 @@
+{
+    "name": "ufmhas",
+    "description": "MHAS writer",
+    "help": "This filter converts MPEG-H Audio streams into MHAS encapsulated data.",
+    "support": [
+        "audio"
+    ]
+}

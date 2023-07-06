@@ -1,0 +1,8 @@
+{
+    "name": "ttxtdec",
+    "description": "TTXT/TX3G decoder",
+    "help": "This filter decodes TTXT/TX3G streams into a BIFS scene graph of the compositor filter.",
+    "support": [
+        "video"
+    ]
+}

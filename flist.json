@@ -1,0 +1,10 @@
+{
+    "name": "flist",
+    "description": "Sources concatenator",
+    "help": "This filter can be used to play playlist files or a list of sources.",
+    "support": [
+        "image",
+        "video",
+        "audio"
+    ]
+}

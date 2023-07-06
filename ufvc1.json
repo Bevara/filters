@@ -1,0 +1,8 @@
+{
+    "name": "ufvc1",
+    "description": "VC1 writer",
+    "help": "This filter converts VC1 visual streams into writable format (reinsert decoder config and start codes if needed).",
+    "support": [
+        "video"
+    ]
+}

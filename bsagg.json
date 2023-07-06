@@ -1,0 +1,8 @@
+{
+    "name": "bsagg",
+    "description": "Compressed layered bitstream aggregator",
+    "help": "This filter aggregates layers and sublayers into a single output PID.",
+    "support": [
+        "video"
+    ]
+}

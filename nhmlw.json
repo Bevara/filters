@@ -1,0 +1,8 @@
+{
+    "name": "nhmlw",
+    "description": "NHML writer",
+    "help": "This filter converts a single stream to an NHML output file.",
+    "support": [
+        "video"
+    ]
+}

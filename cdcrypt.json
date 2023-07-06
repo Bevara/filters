@@ -1,0 +1,8 @@
+{
+    "name": "cdcrypt",
+    "description": "CENC decryptor",
+    "help": "The CENC decryptor supports decrypting CENC, ISMA, HLS Sample-AES (MPEG2 ts) and Adobe streams.",
+    "support": [
+        "video"
+    ]
+}

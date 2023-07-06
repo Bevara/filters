@@ -1,0 +1,10 @@
+{
+    "name": "gsfmx",
+    "description": "GSF Multiplexer",
+    "help": "This filter provides GSF (__GPAC Serialized Format__) multiplexing.",
+    "support": [
+        "image",
+        "video",
+        "audio"
+    ]
+}

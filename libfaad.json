@@ -1,0 +1,8 @@
+{
+    "name": "libfaad",
+    "description": "FAAD decoder",
+    "help": "This filter decodes AAC streams through faad library.",
+    "support": [
+        "audio"
+    ]
+}

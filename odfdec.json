@@ -1,0 +1,8 @@
+{
+    "name": "odfdec",
+    "description": "MPEG-4 OD decoder",
+    "help": "This filter decodes MPEG-4 OD binary frames directly into the scene manager of the compositor.",
+    "support": [
+        "video"
+    ]
+}

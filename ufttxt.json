@@ -1,0 +1,8 @@
+{
+    "name": "ufttxt",
+    "description": "TX3G unframer",
+    "help": "This filter converts a single ISOBMFF TX3G stream to TTXT (xml format) unframed stream.",
+    "support": [
+        "video"
+    ]
+}

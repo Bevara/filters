@@ -1,0 +1,8 @@
+{
+    "name": "mp4dmx",
+    "description": "ISOBMFF/QT demultiplexer",
+    "help": "This filter demultiplexes ISOBMF and QT files.",
+    "support": [
+        "video"
+    ]
+}

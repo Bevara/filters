@@ -1,0 +1,8 @@
+{
+    "name": "libjxl",
+    "description": "JXL decoder",
+    "help": "This filter decodes JXL images.",
+    "support": [
+        "image"
+    ]
+}

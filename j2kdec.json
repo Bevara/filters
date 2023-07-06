@@ -1,0 +1,8 @@
+{
+    "name": "j2kdec",
+    "description": "OpenJPEG2000 decoder",
+    "help": "This filter decodes JPEG2000 streams through OpenJPEG2000 library.",
+    "support": [
+        "image"
+    ]
+}

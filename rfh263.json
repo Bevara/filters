@@ -1,0 +1,8 @@
+{
+    "name": "rfh263",
+    "description": "H263 reframer",
+    "help": "This filter parses H263 files/data and outputs corresponding visual PID and frames.",
+    "support": [
+        "video"
+    ]
+}

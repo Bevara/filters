@@ -1,0 +1,8 @@
+{
+    "name": "rfmpgvid",
+    "description": "M1V/M2V/M4V reframer",
+    "help": "This filter parses MPEG-1/2 and MPEG-4 part 2 video files/data and outputs corresponding video PID and frames.",
+    "support": [
+        "video"
+    ]
+}

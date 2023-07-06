@@ -1,0 +1,8 @@
+{
+    "name": "rfav1",
+    "description": "AV1/IVF/VP9 reframer",
+    "help": "This filter parses AV1 OBU, AV1 AnnexB or IVF with AV1 or VP9 files/data and outputs corresponding visual PID and frames.",
+    "support": [
+        "video"
+    ]
+}

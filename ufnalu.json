@@ -1,0 +1,8 @@
+{
+    "name": "ufnalu",
+    "description": "AVC/HEVC to AnnexB writer",
+    "help": "This filter converts AVC|H264 and HEVC streams into AnnexB format, with inband parameter sets and start codes.",
+    "support": [
+        "video"
+    ]
+}

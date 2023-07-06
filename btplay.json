@@ -1,0 +1,8 @@
+{
+    "name": "btplay",
+    "description": "BT/XMT/X3D loader",
+    "help": "This filter parses MPEG-4 BIFS (BT and XMT), VRML97 and X3D (wrl and XML) files directly into the scene graph of the compositor.",
+    "support": [
+        "video"
+    ]
+}

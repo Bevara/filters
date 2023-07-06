@@ -1,0 +1,8 @@
+{
+    "name": "libopenhevc",
+    "description": "OpenHEVC decoder",
+    "help": "This filter decodes HEVC and LHVC (HEVC scalable extensions) from one or more PIDs through the OpenHEVC library",
+    "support": [
+        "video"
+    ]
+}

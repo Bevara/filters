@@ -1,0 +1,9 @@
+{
+    "name": "xiph",
+    "description": "XIPH decoders",
+    "help": "This filter decodes Theora, Ogg and Vorbis streams.",
+    "support": [
+        "video",
+        "audio"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "name": "mp4mx",
+    "description": "ISOBMFF/QT multiplexer",
+    "help": "This filter multiplexes streams to ISOBMFF (14496-12 and derived specifications) or QuickTime",
+    "support": [
+        "video"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "name": "rfrawvid",
+    "description": "RAW video reframer",
+    "help": "This filter parses raw YUV and RGB files/data and outputs corresponding raw video PID and frames.",
+    "support": [
+        "video"
+    ]
+}

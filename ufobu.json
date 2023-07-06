@@ -1,0 +1,8 @@
+{
+    "name": "ufobu",
+    "description": "IVF/OBU/annexB writer",
+    "help": "This filter rewrites VPx or AV1 bitstreams into a IVF, annexB or OBU sequence.",
+    "support": [
+        "video"
+    ]
+}

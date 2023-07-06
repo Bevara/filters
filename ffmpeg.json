@@ -1,0 +1,10 @@
+{
+    "name": "ffmpeg",
+    "description": "FFMPEG decoder",
+    "help": "This filter decodes audio and video streams using FFMPEG.",
+    "support": [
+        "image",
+        "video",
+        "audio"
+    ]
+}

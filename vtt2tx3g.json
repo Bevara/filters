@@ -1,0 +1,8 @@
+{
+    "name": "vtt2tx3g",
+    "description": "WebVTT to TX3G",
+    "help": "This filter rewrites unframed WebVTT to TX3G / QT Timed Text (binary format)",
+    "support": [
+        "video"
+    ]
+}

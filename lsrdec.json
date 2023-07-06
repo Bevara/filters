@@ -1,0 +1,8 @@
+{
+    "name": "lsrdec",
+    "description": "MPEG-4 LASeR decoder",
+    "help": "This filter decodes MPEG-4 LASeR binary frames directly into the scene graph of the compositor.",
+    "support": [
+        "video"
+    ]
+}

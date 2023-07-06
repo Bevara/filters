@@ -1,0 +1,8 @@
+{
+    "name": "rflatm",
+    "description": "LATM reframer",
+    "help": "This filter parses AAC in LATM files/data and outputs corresponding audio PID and frames.",
+    "support": [
+        "audio"
+    ]
+}

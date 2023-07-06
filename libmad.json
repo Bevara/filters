@@ -1,0 +1,8 @@
+{
+    "name": "libmad",
+    "description": "MAD decoder",
+    "help": "This filter decodes MPEG 1/2 audio streams through libmad library.",
+    "support": [
+        "audio"
+    ]
+}

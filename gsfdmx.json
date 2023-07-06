@@ -1,0 +1,10 @@
+{
+    "name": "gsfdmx",
+    "description": "GSF demultiplexer",
+    "help": "This filter provides GSF (__GPAC Serialized Format__) demultiplexing.",
+    "support": [
+        "image",
+        "video",
+        "audio"
+    ]
+}

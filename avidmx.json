@@ -1,0 +1,8 @@
+{
+    "name": "avidmx",
+    "description": "AVI demultiplexer",
+    "help": "",
+    "support": [
+        "video"
+    ]
+}

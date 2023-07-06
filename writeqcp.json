@@ -1,0 +1,8 @@
+{
+    "name": "writeqcp",
+    "description": "QCP writer",
+    "help": "This filter converts a single QCELP, EVRC or MSV stream to a QCP output file.",
+    "support": [
+        "audio"
+    ]
+}

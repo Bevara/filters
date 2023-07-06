@@ -1,0 +1,8 @@
+{
+    "name": "ttmldec",
+    "description": "TTML decoder",
+    "help": "This filter decodes TTML streams into a SVG scene graph of the compositor filter.",
+    "support": [
+        "image"
+    ]
+}

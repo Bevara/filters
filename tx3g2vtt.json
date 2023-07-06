@@ -1,0 +1,8 @@
+{
+    "name": "tx3g2vtt",
+    "description": "TX3G to WebVTT",
+    "help": "This filter converts a single ISOBMFF TX3G stream to a WebVTT unframed stream.",
+    "support": [
+        "video"
+    ]
+}

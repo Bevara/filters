@@ -1,0 +1,8 @@
+{
+    "name": "uflatm",
+    "description": "Raw AAC to LATM writer",
+    "help": "This filter converts AAC streams into LATM encapsulated data.",
+    "support": [
+        "audio"
+    ]
+}

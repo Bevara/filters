@@ -1,0 +1,8 @@
+{
+    "name": "svgplay",
+    "description": "SVG loader",
+    "help": "This filter parses SVG files directly into the scene graph of the compositor.",
+    "support": [
+        "image"
+    ]
+}
