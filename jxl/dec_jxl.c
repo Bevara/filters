@@ -229,3 +229,7 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_jxldec_register(GF_Filter
 {
     return &JXLDecoderRegister;
 }
+
+void abort() {
+  _Exit(1);
+}
