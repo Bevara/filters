@@ -192,7 +192,7 @@ GF_Err EMSCRIPTEN_KEEPALIVE bmpFullDec_process(GF_Filter *filter)
 	GF_BMPFullCtx *ctx = gf_filter_get_udta(filter);
 
 	GF_FilterPacket *pck, *pck_dst;
-	u8 bpp = 3;
+	u8 bpp = 4;
 
 	pck = gf_filter_pid_get_packet(ctx->ipid);
 	if (!pck)
@@ -288,19 +288,8 @@ GF_Err EMSCRIPTEN_KEEPALIVE bmpFullDec_process(GF_Filter *filter)
 	{
 		if (bmp->Header.BitsPerPixel == 32) // nothing much to do for this case; unless in BGR format
 		{
-			// memcpy( bmp->Data, data+dataInd, bmp->Header.Width* bmp->Header.Height * bpp);
-			// Image is upside down :(
-			char* rgba = bmp->Data;
-			char* rgb = data+dataInd;
-			for (int i = 0; i < bmp->Header.Width* bmp->Header.Height * bpp; ++i)
-			{
-				for (int j = 0; j < bpp; ++j)
-				{
-					rgba[j] = rgb[j];
-				}
-				rgba += 3;
-				rgb += 4;
-			}
+			// FIXME : Image is upside down :(
+			memcpy( bmp->Data, data+dataInd, bmp->Header.Width* bmp->Header.Height * bpp);
 		}
 		else if (bmp->Header.BitsPerPixel == 24)
 		{ /* we need to insert that alpha; rather than memcpy RGB chunks, let's go one-by-one in case we need to debug  */
@@ -361,7 +350,7 @@ GF_Err EMSCRIPTEN_KEEPALIVE bmpFullDec_process(GF_Filter *filter)
 	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_HEIGHT, &PROP_UINT(BMP_GetHeight()));
 
 	// Only doing RGBA output at the moment
-	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(GF_PIXEL_RGB));
+	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(GF_PIXEL_RGBX));
 	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_STRIDE, &PROP_UINT(bpp * BMP_GetWidth()));
 
 	gf_filter_pck_merge_properties(pck, pck_dst);
@@ -370,7 +359,8 @@ GF_Err EMSCRIPTEN_KEEPALIVE bmpFullDec_process(GF_Filter *filter)
 	gf_filter_pid_drop_packet(ctx->ipid);
 
 	// TODO: free the local data
-
+	free(bmp);
+	
 	return GF_OK;
 }
 
