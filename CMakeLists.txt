@@ -1,7 +1,5 @@
 include(filters.cmake)
 
-add_subdirectory(bmpfull)
-
 Set(NANOJPEG_SRC
         ${CMAKE_SOURCE_DIR}/filters/nanojpeg.c
         ${THIRD_PARTIES}/nanojpeg/trunk/nanojpeg/nanojpeg.c
@@ -1263,6 +1261,19 @@ add_filter(libjxl
         ['_dynCall_jxldec_register','_dynCall_jxl_reframe_register']
         ""
         "${LIBJXL_INC}"
+        ""
+        "1")
+
+Set(BMPFULL_SRC
+        ${CMAKE_SOURCE_DIR}/filters/bmpfull/bmpDecFull.c
+)
+
+add_filter(bmpfull
+        "${BMPFULL_SRC}"
+        ""
+        _dynCall_BMPFull_register
+        ""
+        ""
         ""
         "1")
 
