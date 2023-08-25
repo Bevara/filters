@@ -254,7 +254,7 @@ SET(FF_LIB
 add_filter(ffmpeg
         "${FF_SRC}"
         "${FF_LIB}"
-        ['_dynCall_ffdec_register','_dynCall_ffenc_register','_dynCall_ffbsf_register','_dynCall_ffavf_register','_dynCall_ffavf_register','_dynCall_ffdmx_register','_dynCall_ffsws_register','_dynCall_ffmx_register']
+        ['_dynCall_ffdec_register','_dynCall_ffenc_register','_dynCall_ffbsf_register','_dynCall_ffavf_register','_dynCall_ffdmx_register','_dynCall_ffsws_register','_dynCall_ffmx_register']
         GPAC_HAS_FFMPEG
         "${FF_INCLUDE}"
         ""

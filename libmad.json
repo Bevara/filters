@@ -1,6 +1,7 @@
 {
     "name": "libmad",
     "description": "MAD decoder",
+    "filters":["maddec","rfmp3"],
     "help": "This filter decodes MPEG 1/2 audio streams through libmad library.",
     "support": [
         "audio"

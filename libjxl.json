@@ -1,6 +1,7 @@
 {
     "name": "libjxl",
     "description": "JXL decoder",
+    "filters":["jxldec","rfjxl"],
     "help": "This filter decodes JXL images.",
     "support": [
         "image"
