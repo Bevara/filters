@@ -1,6 +1,7 @@
 {
     "name": "pngenc",
     "description": "PNG encoder",
+    "filters":["encpng"],
     "help": "This filter encodes a single uncompressed video PID to PNG using libpng.",
     "support": [
         "image"
