@@ -1,8 +1,0 @@
-{
-    "name": "rfqcp",
-    "description": "QCP reframer",
-    "help": "This filter parses QCP files/data and outputs corresponding audio PID and frames.",
-    "support": [
-        "audio"
-    ]
-}

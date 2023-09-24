@@ -1,8 +1,0 @@
-{
-    "name": "cecrypt",
-    "description": "CENC encryptor",
-    "help": "The CENC encryptor supports CENC, ISMA and Adobe encryption. It uses a DRM config file for declaring keys.",
-    "support": [
-        "video"
-    ]
-}

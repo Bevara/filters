@@ -1,8 +1,0 @@
-{
-    "name": "vobsubdmx",
-    "description": "VobSub parser",
-    "help": "This filter parses VobSub files/data to produce media PIDs and frames.",
-    "support": [
-        "video"
-    ]
-}

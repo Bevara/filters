@@ -1,8 +1,0 @@
-{
-    "name": "nhntw",
-    "description": "NHNT writer",
-    "help": "This filter converts a single stream to an NHNT output file.",
-    "support": [
-        "video"
-    ]
-}

@@ -1,8 +1,0 @@
-{
-    "name": "imgdec",
-    "description": "PNG/JPG decoder",
-    "help": "This filter decodes JPEG and PNG images.",
-    "support": [
-        "image"
-    ]
-}

@@ -1,8 +1,0 @@
-{
-    "name": "bmpfull",
-    "description": "BMPFull decoder",
-    "help": "This filter decodes limited BMP streams.",
-    "support": [
-        "image"
-    ]
-}

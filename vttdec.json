@@ -1,8 +1,0 @@
-{
-    "name": "vttdec",
-    "description": "WebVTT decoder",
-    "help": "This filter decodes WebVTT streams into a SVG scene graph of the compositor filter.",
-    "support": [
-        "video"
-    ]
-}

@@ -1,8 +1,0 @@
-{
-    "name": "nhntr",
-    "description": "NHNT reader",
-    "help": "This filter reads NHNT files/data to produce a media PID and frames.",
-    "support": [
-        "video"
-    ]
-}

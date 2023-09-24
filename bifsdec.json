@@ -1,8 +1,0 @@
-{
-    "name": "bifsdec",
-    "description": "MPEG-4 BIFS decoder",
-    "help": "This filter decodes MPEG-4 BIFS binary frames directly into the scene graph of the compositor. Note: This filter cannot be used to dump BIFS content to text or xml, use `MP4Box` for that.",
-    "support": [
-        "video"
-    ]
-}

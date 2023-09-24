@@ -1,8 +1,0 @@
-{
-    "name": "cryptout",
-    "description": "CryptFile output",
-    "help": "This filter dispatch raw blocks from clear input files to encrypted files with AES 128 CBC in PKCS7",
-    "support": [
-        "video"
-    ]
-}

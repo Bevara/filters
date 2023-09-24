@@ -1,8 +1,0 @@
-{
-    "name": "ttml2srt",
-    "description": "TTML to SRT",
-    "help": "This filter converts TTML frames to unframed SRT.",
-    "support": [
-        "video"
-    ]
-}

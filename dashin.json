@@ -1,8 +1,0 @@
-{
-    "name": "dashin",
-    "description": "MPEG-DASH and HLS client",
-    "help": "This filter reads MPEG-DASH, HLS and MS Smooth manifests.",
-    "support": [
-        "video"
-    ]
-}

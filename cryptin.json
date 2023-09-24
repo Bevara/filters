@@ -1,8 +1,0 @@
-{
-    "name": "cryptin",
-    "description": "CryptFile input",
-    "help": "This filter dispatch raw blocks from encrypted files with AES 128 CBC in PKCS7 to clear input files",
-    "support": [
-        "video"
-    ]
-}

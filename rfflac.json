@@ -1,8 +1,0 @@
-{
-    "name": "rfflac",
-    "description": "FLAC reframer",
-    "help": "This filter parses FLAC files/data and outputs corresponding audio PID and frames.",
-    "support": [
-        "audio"
-    ]
-}

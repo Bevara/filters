@@ -1,8 +1,0 @@
-{
-    "name": "vcrop",
-    "description": "Video crop",
-    "help": "This filter is used to crop raw video data.",
-    "support": [
-        "video"
-    ]
-}

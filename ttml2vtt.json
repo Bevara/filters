@@ -1,8 +1,0 @@
-{
-    "name": "ttml2vtt",
-    "description": "TTML to WebVTT",
-    "help": "This filter converts TTML frames to unframed WebVTT.",
-    "support": [
-        "video"
-    ]
-}

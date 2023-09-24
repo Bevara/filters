@@ -1,9 +1,0 @@
-{
-    "name": "oggmx",
-    "description": "OGG multiplexer",
-    "help": "This filter multiplexes audio and video to produce an OGG stream.",
-    "support": [
-        "video",
-        "audio"
-    ]
-}

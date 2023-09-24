@@ -1,8 +1,0 @@
-{
-    "name": "rftruehd",
-    "description": "TrueHD reframer",
-    "help": "This filter parses Dolby TrueHD files/data and outputs corresponding audio PID and frames.",
-    "support": [
-        "audio"
-    ]
-}

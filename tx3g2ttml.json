@@ -1,8 +1,0 @@
-{
-    "name": "tx3g2ttml",
-    "description": "TX3G to TTML",
-    "help": "This filter converts ISOBMFF TX3G stream to a TTML stream.",
-    "support": [
-        "video"
-    ]
-}

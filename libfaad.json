@@ -1,9 +1,0 @@
-{
-    "name": "libfaad",
-    "description": "FAAD decoder",
-    "filters":["faad","rfadts"],
-    "help": "This filter decodes AAC streams through faad library.",
-    "support": [
-        "audio"
-    ]
-}

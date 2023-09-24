@@ -1,8 +1,0 @@
-{
-    "name": "nhmlr",
-    "description": "NHML reader",
-    "help": "This filter reads NHML files/data to produce a media PID and frames.",
-    "support": [
-        "video"
-    ]
-}

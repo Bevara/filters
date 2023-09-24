@@ -1,8 +1,0 @@
-{
-    "name": "ufvtt",
-    "description": "WebVTT unframer",
-    "help": "This filter converts a single ISOBMFF WebVTT stream to its unframed format.",
-    "support": [
-        "video"
-    ]
-}

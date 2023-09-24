@@ -1,8 +1,0 @@
-{
-    "name": "rfmhas",
-    "description": "MPEH-H Audio Stream reframer",
-    "help": "This filter parses MHAS files/data and outputs corresponding audio PID and frames.",
-    "support": [
-        "audio"
-    ]
-}

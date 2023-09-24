@@ -1,8 +1,0 @@
-{
-    "name": "unframer",
-    "description": "Stream unframer",
-    "help": "This filter is used to force reframing of input sources using the same internal framing as GPAC (e.g. ISOBMFF) but with broken framing or signaling.",
-    "support": [
-        "video"
-    ]
-}

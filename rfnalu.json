@@ -1,8 +1,0 @@
-{
-    "name": "rfnalu",
-    "description": "AVC/HEVC reframer",
-    "help": "This filter parses AVC|H264 and HEVC files/data and outputs corresponding video PID and frames.",
-    "support": [
-        "video"
-    ]
-}

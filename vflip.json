@@ -1,8 +1,0 @@
-{
-    "name": "vflip",
-    "description": "Video flip",
-    "help": "This filter flips uncompressed video frames vertically, horizontally, in both directions or no flip",
-    "support": [
-        "video"
-    ]
-}

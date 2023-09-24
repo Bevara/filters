@@ -1,9 +1,0 @@
-{
-    "name": "rewind",
-    "description": "Audio/Video rewinder",
-    "help": "This filter reverses audio and video frames in negative playback speed.\nThe filter is in passthrough if speed is positive. Otherwise, it reverts decoded GOPs for video, or revert samples in decoded frame for audio (not really nice for most codecs).",
-    "support": [
-        "video",
-        "audio"
-    ]
-}

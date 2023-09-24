@@ -1,8 +1,0 @@
-{
-    "name": "tx3g2srt",
-    "description": "TX3G to SRT",
-    "help": "This filter converts a single ISOBMFF TX3G stream to an SRT unframed stream.",
-    "support": [
-        "video"
-    ]
-}

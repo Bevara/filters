@@ -1,8 +1,0 @@
-{
-    "name": "tssplit",
-    "description": "MPEG Transport Stream splitter",
-    "help": "This filter splits an MPEG-2 transport stream into several single program transport streams.",
-    "support": [
-        "video"
-    ]
-}

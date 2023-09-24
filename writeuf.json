@@ -1,8 +1,0 @@
-{
-    "name": "writeuf",
-    "description": "Stream to unframed format",
-    "help": "Generic single stream to unframed format converter, used when converting PIDs. This filter should not be explicitly loaded.",
-    "support": [
-        "video"
-    ]
-}

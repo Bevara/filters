@@ -1,8 +1,0 @@
-{
-    "name": "m2psdmx",
-    "description": "MPEG PS demultiplexer",
-    "help": "This filter demultiplexes MPEG-2 program streams to produce media PIDs and frames.",
-    "support": [
-        "video"
-    ]
-}
