@@ -67,8 +67,8 @@ SET(LIBJXL_SRC
 SET(LIBJXL_LIB
         ${THIRD_PARTIES_BINARIES}/libjxl/lib/libjxl.a
         ${THIRD_PARTIES_BINARIES}/libjxl/third_party/highway/libhwy.a
-        ${THIRD_PARTIES_BINARIES}/libjxl/third_party/brotli/libbrotlicommon-static.a
-        ${THIRD_PARTIES_BINARIES}/libjxl/third_party/brotli/libbrotlidec-static.a
+        ${THIRD_PARTIES_BINARIES}/libjxl/third_party/brotli/libbrotlicommon.a
+        ${THIRD_PARTIES_BINARIES}/libjxl/third_party/brotli/libbrotlidec.a
         ${THIRD_PARTIES}/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc.a
         ${THIRD_PARTIES}/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++.a
         ${THIRD_PARTIES}/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++abi.a
