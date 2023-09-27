@@ -1,7 +1,7 @@
 {
     "name": "libjpeg",
-    "description": "JPG encoder",
-    "help": "This filter encodes to JPEG using libjpeg.",
+    "description": "JPG encoder and decoder",
+    "help": "This filter encodes and decodes to JPEG using libjpeg.",
     "support": [
         "image"
     ]
