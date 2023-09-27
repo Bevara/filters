@@ -1,8 +1,8 @@
 {
-    "name": "pngenc",
-    "description": "PNG encoder",
+    "name": "libpng",
+    "description": "PNG encoder and decoder",
     "filters":["encpng"],
-    "help": "This filter encodes images to PNG using libpng.",
+    "help": "This filter encodes and decodes to PNG using libpng.",
     "support": [
         "image"
     ]
