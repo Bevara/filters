@@ -24,7 +24,7 @@ SET(PNGENC_LIBS
         ${PNG_LIB}
 )
 
-add_filter(pngenc
+add_filter(libpng
         "${PNGENC_SRC}"
         "${PNGENC_LIBS}"
         _dynCall_pngenc_register
@@ -50,7 +50,7 @@ SET(JPGENC_SRC
         ${GPAC_LOCATION}/src/filters/enc_jpg.c
 )
 
-add_filter(jpgenc
+add_filter(libjpeg
         "${JPGENC_SRC}"
         "${JPEG_LIB}"
         _dynCall_jpgenc_register
