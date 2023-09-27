@@ -1,7 +1,7 @@
 {
-    "name": "jpgenc",
+    "name": "libjpeg",
     "description": "JPG encoder",
-    "help": "This filter encodes a single uncompressed video PID to JPEG using libjpeg.",
+    "help": "This filter encodes to JPEG using libjpeg.",
     "support": [
         "image"
     ]

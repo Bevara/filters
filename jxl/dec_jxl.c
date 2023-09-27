@@ -107,6 +107,7 @@ static GF_Err jxldec_process(GF_Filter *filter)
         format.num_channels = 3;
         break;
     default:
+        format.num_channels = 3;
         break;
     }
 
