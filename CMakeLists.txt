@@ -33,6 +33,31 @@ add_filter(pngenc
         ""
         "1")
 
+        SET(JPGENC_SRC
+        ${GPAC_LOCATION}/src/filters/enc_jpg.c
+)
+
+SET(JPEG_INC
+        ${THIRD_PARTIES}/jpeg-9e
+        ${THIRD_PARTIES_BINARIES}/libjpeg
+)
+
+SET(JPEG_LIB
+        ${THIRD_PARTIES_BINARIES}/libjpeg/.libs/libjpeg.a
+)
+
+SET(JPGENC_SRC
+        ${GPAC_LOCATION}/src/filters/enc_jpg.c
+)
+
+add_filter(jpgenc
+        "${JPGENC_SRC}"
+        "${JPEG_LIB}"
+        _dynCall_jpgenc_register
+        GPAC_HAS_JPEG
+        "${JPEG_INC}"
+        ""
+        "1")
 
 SET(LIBJXL_SRC
         ${CMAKE_SOURCE_DIR}/filters/jxl/reframe_jxl.c

@@ -11,6 +11,7 @@ typedef struct
     Bool is_playing;
     u32 src_timescale;
     u32 codec_id;
+    u32 ofmt;
 } GF_JXLDecCtx;
 
 static GF_Err jxldec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
@@ -18,7 +19,6 @@ static GF_Err jxldec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is
     const GF_PropertyValue *prop;
     GF_JXLDecCtx *ctx = (GF_JXLDecCtx *)gf_filter_get_udta(filter);
 
-    // disconnect of src pid (not yet supported)
     if (is_remove)
     {
         if (ctx->opid)
@@ -45,9 +45,26 @@ static GF_Err jxldec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is
     // copy properties at init or reconfig
     gf_filter_pid_copy_properties(ctx->opid, ctx->ipid);
     gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_CODECID, &PROP_UINT(GF_CODECID_RAW));
-    gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(GF_PIXEL_RGBA));
+    
+    if (!ctx->ofmt) {
+        ctx->ofmt = GF_PIXEL_RGBA;
+        gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(GF_PIXEL_RGBA));
+    }else{
+        gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(ctx->ofmt));
+    }
 
     return GF_OK;
+}
+
+static GF_Err jxldec_reconfigure_output(GF_Filter *filter, GF_FilterPid *pid)
+{
+	const GF_PropertyValue *p;
+	GF_JXLDecCtx *ctx = gf_filter_get_udta(filter);
+	if (ctx->opid != pid) return GF_BAD_PARAM;
+
+	p = gf_filter_pid_caps_query(pid, GF_PROP_PID_PIXFMT);
+	if (p) ctx->ofmt = p->value.uint;
+	return jxldec_configure_pid(filter, ctx->ipid, GF_FALSE);
 }
 
 static GF_Err jxldec_process(GF_Filter *filter)
@@ -81,7 +98,19 @@ static GF_Err jxldec_process(GF_Filter *filter)
     size_t pixels_size;
 
     JxlDataType storageFormat = ctx->want_hdr ? JXL_TYPE_UINT16 : JXL_TYPE_UINT8;
-    format.num_channels = 4;
+    switch (ctx->ofmt)
+    {
+    case GF_PIXEL_RGBA:
+        format.num_channels = 4;
+        break;
+    case GF_PIXEL_RGB:
+        format.num_channels = 3;
+        break;
+    default:
+        break;
+    }
+
+    
     format.data_type = storageFormat;
     format.endianness = JXL_NATIVE_ENDIAN;
     format.align = 0;
@@ -199,6 +228,14 @@ static GF_Err jxldec_process(GF_Filter *filter)
     return GF_OK;
 }
 
+#define OFFS(_n)	#_n, offsetof(GF_JXLDecCtx, _n)
+static GF_FilterArgs EVGSArgs[] =
+{
+	{ OFFS(ofmt), "pixel format for output image. When not set, input format is used", GF_PROP_PIXFMT, "none", NULL, 0},
+
+	{0}
+};
+
 static const GF_FilterCapability JXLDecCaps[] =
     {
         CAP_UINT(GF_CAPS_INPUT, GF_PROP_PID_STREAM_TYPE, GF_STREAM_VISUAL),
@@ -222,6 +259,7 @@ GF_FilterRegister JXLDecoderRegister = {
             .private_size = sizeof(GF_JXLDecCtx),
     SETCAPS(JXLDecCaps),
     .configure_pid = jxldec_configure_pid,
+    .reconfigure_output = jxldec_reconfigure_output,
     .process = jxldec_process,
 };
 
