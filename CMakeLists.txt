@@ -16,18 +16,21 @@ else()
 endif()
 
 
-SET(PNGENC_SRC
+SET(LIBPNG_SRC
+        ${GPAC_LOCATION}/src/media_tools/img.c
         ${GPAC_LOCATION}/src/filters/enc_png.c
+        ${CMAKE_SOURCE_DIR}/filters/png/dec_png.c
+        ${CMAKE_SOURCE_DIR}/filters/png/reframe_png.c
 )
 
-SET(PNGENC_LIBS
+SET(LIBPNG_LIBS
         ${PNG_LIB}
 )
 
 add_filter(libpng
-        "${PNGENC_SRC}"
-        "${PNGENC_LIBS}"
-        _dynCall_pngenc_register
+        "${LIBPNG_SRC}"
+        "${LIBPNG_LIBS}"
+        ['_dynCall_pngenc_register','_dynCall_pngdec_register','_dynCall_png_reframe_register']
         GPAC_HAS_PNG
         "${PNG_INC}"
         ""
@@ -46,14 +49,17 @@ SET(JPEG_LIB
         ${THIRD_PARTIES_BINARIES}/libjpeg/.libs/libjpeg.a
 )
 
-SET(JPGENC_SRC
+SET(JPEG_SRC
+        ${GPAC_LOCATION}/src/media_tools/img.c
         ${GPAC_LOCATION}/src/filters/enc_jpg.c
+        ${CMAKE_SOURCE_DIR}/filters/jpeg/dec_jpeg.c
+        ${CMAKE_SOURCE_DIR}/filters/jpeg/reframe_jpeg.c
 )
 
 add_filter(libjpeg
-        "${JPGENC_SRC}"
+        "${JPEG_SRC}"
         "${JPEG_LIB}"
-        _dynCall_jpgenc_register
+        ['_dynCall_jpgenc_register','_dynCall_jpegdec_register','_dynCall_jpegdec_reframe_register']
         GPAC_HAS_JPEG
         "${JPEG_INC}"
         ""
