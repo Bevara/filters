@@ -282,8 +282,8 @@ static const char *img_probe_data(const u8 *data, u32 size, GF_FilterProbeScore 
 static const GF_FilterCapability ReframeImgCaps[] =
 	{
 		CAP_UINT(GF_CAPS_INPUT, GF_PROP_PID_STREAM_TYPE, GF_STREAM_FILE),
-		CAP_STRING(GF_CAPS_INPUT, GF_PROP_PID_FILE_EXT, "jpg|jpeg|jp2|j2k|bmp|png"),
-		CAP_STRING(GF_CAPS_INPUT, GF_PROP_PID_MIME, "image/jpg|image/jp2|image/bmp|image/png"),
+		CAP_STRING(GF_CAPS_INPUT, GF_PROP_PID_FILE_EXT, "png"),
+		CAP_STRING(GF_CAPS_INPUT, GF_PROP_PID_MIME, "image/png"),
 		CAP_UINT(GF_CAPS_OUTPUT, GF_PROP_PID_STREAM_TYPE, GF_STREAM_VISUAL),
 		CAP_UINT(GF_CAPS_OUTPUT, GF_PROP_PID_CODECID, GF_CODECID_PNG),
 };
