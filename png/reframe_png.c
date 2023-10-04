@@ -19,7 +19,7 @@ typedef struct
 	Bool is_playing;
 } GF_ReframeImgCtx;
 
-GF_Err img_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
+GF_Err png_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 {
 	GF_ReframeImgCtx *ctx = gf_filter_get_udta(filter);
 	const GF_PropertyValue *p;
@@ -52,7 +52,7 @@ GF_Err img_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 	return GF_OK;
 }
 
-Bool img_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
+Bool png_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
 {
 	GF_FilterEvent fevt;
 	GF_ReframeImgCtx *ctx = gf_filter_get_udta(filter);
@@ -87,7 +87,7 @@ Bool img_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
 	return GF_TRUE;
 }
 
-GF_Err img_process(GF_Filter *filter)
+GF_Err png_process(GF_Filter *filter)
 {
 	GF_ReframeImgCtx *ctx = gf_filter_get_udta(filter);
 	GF_FilterPacket *pck, *dst_pck;
@@ -189,37 +189,7 @@ GF_Err img_process(GF_Filter *filter)
 
 	e = GF_OK;
 	u32 start_offset = 0;
-	if (ctx->codec_id == GF_CODECID_J2K)
-	{
-
-		if (size < 8)
-		{
-			gf_filter_pid_drop_packet(ctx->ipid);
-			return GF_NON_COMPLIANT_BITSTREAM;
-		}
-
-		if ((data[4] == 'j') && (data[5] == 'P') && (data[6] == ' ') && (data[7] == ' '))
-		{
-			bs = gf_bs_new(data, size, GF_BITSTREAM_READ);
-			while (gf_bs_available(bs))
-			{
-				u32 bsize = gf_bs_read_u32(bs);
-				u32 btype = gf_bs_read_u32(bs);
-				if (btype == GF_4CC('j', 'p', '2', 'c'))
-				{
-					start_offset = (u32)gf_bs_get_position(bs) - 8;
-					break;
-				}
-				gf_bs_skip_bytes(bs, bsize - 8);
-			}
-			gf_bs_del(bs);
-			if (start_offset >= size)
-			{
-				gf_filter_pid_drop_packet(ctx->ipid);
-				return GF_NON_COMPLIANT_BITSTREAM;
-			}
-		}
-	}
+	
 	dst_pck = gf_filter_pck_new_ref(ctx->opid, start_offset, size - start_offset, pck);
 	if (!dst_pck)
 		return GF_OUT_OF_MEM;
@@ -238,48 +208,17 @@ GF_Err img_process(GF_Filter *filter)
 
 #include <gpac/internal/isomedia_dev.h>
 
-static const char *img_probe_data(const u8 *data, u32 size, GF_FilterProbeScore *score)
+static const char *png_probe_data(const u8 *data, u32 size, GF_FilterProbeScore *score)
 {
-	/*JPEG*/
-	if ((data[0] == 0xFF) && (data[1] == 0xD8) && (data[2] == 0xFF))
-	{
-		*score = GF_FPROBE_SUPPORTED;
-		return "image/jpg";
-	}
-	/*PNG*/
 	if ((data[0] == 0x89) && (data[1] == 0x50) && (data[2] == 0x4E))
 	{
 		*score = GF_FPROBE_SUPPORTED;
 		return "image/png";
 	}
-	GF_BitStream *bs = gf_bs_new(data, size, GF_BITSTREAM_READ);
-	u32 bsize = gf_bs_read_u32(bs);
-	u32 btype = gf_bs_read_u32(bs);
-	if ((bsize == 12) && ((btype == GF_ISOM_BOX_TYPE_JP) || (btype == GF_ISOM_BOX_TYPE_JP2H)))
-	{
-		if (btype == GF_ISOM_BOX_TYPE_JP2H)
-		{
-			*score = GF_FPROBE_FORCE;
-			gf_bs_del(bs);
-			return "image/jp2";
-		}
-		btype = gf_bs_read_u32(bs);
-		if (btype == 0x0D0A870A)
-		{
-			*score = GF_FPROBE_FORCE;
-			gf_bs_del(bs);
-			return "image/jp2";
-		}
-	}
-	gf_bs_del(bs);
-	if ((size >= 54) && (data[0] == 'B') && (data[1] == 'M'))
-	{
-		*score = GF_FPROBE_SUPPORTED;
-		return "image/bmp";
-	}
+	
 	return NULL;
 }
-static const GF_FilterCapability ReframeImgCaps[] =
+static const GF_FilterCapability ReframePngCaps[] =
 	{
 		CAP_UINT(GF_CAPS_INPUT, GF_PROP_PID_STREAM_TYPE, GF_STREAM_FILE),
 		CAP_STRING(GF_CAPS_INPUT, GF_PROP_PID_FILE_EXT, "png"),
@@ -289,29 +228,29 @@ static const GF_FilterCapability ReframeImgCaps[] =
 };
 
 #define OFFS(_n) #_n, offsetof(GF_ReframeImgCtx, _n)
-static const GF_FilterArgs ReframeImgArgs[] =
+static const GF_FilterArgs ReframePngArgs[] =
 	{
 		{OFFS(fps), "import frame rate (0 default to 1 Hz)", GF_PROP_FRACTION, "0/1000", NULL, GF_FS_ARG_HINT_HIDE},
 		{0}};
 
-GF_FilterRegister ReframeImgRegister = {
-	.name = "rfimg",
-	GF_FS_SET_DESCRIPTION("JPG/J2K/PNG/BMP reframer")
-		GF_FS_SET_HELP("This filter parses JPG/J2K/PNG/BMP files/data and outputs corresponding visual PID and frames.\n"
+GF_FilterRegister ReframePngRegister = {
+	.name = "rfpng",
+	GF_FS_SET_DESCRIPTION("PNG reframer")
+		GF_FS_SET_HELP("This filter parses PNG files/data and outputs corresponding visual PID and frames.\n"
 					   "\n"
 					   "The following extensions for PNG change the pixel format for RGBA images:\n"
 					   "- pngd: use RGB+depth map pixel format\n"
 					   "- pngds: use RGB+depth(7bits)+shape(MSB of alpha channel) pixel format\n"
 					   "")
 			.private_size = sizeof(GF_ReframeImgCtx),
-	.args = ReframeImgArgs,
-	SETCAPS(ReframeImgCaps),
-	.configure_pid = img_configure_pid,
-	.probe_data = img_probe_data,
-	.process = img_process,
-	.process_event = img_process_event};
+	.args = ReframePngArgs,
+	SETCAPS(ReframePngCaps),
+	.configure_pid = png_configure_pid,
+	.probe_data = png_probe_data,
+	.process = png_process,
+	.process_event = png_process_event};
 
 const GF_FilterRegister *dynCall_png_reframe_register(GF_FilterSession *session)
 {
-	return &ReframeImgRegister;
+	return &ReframePngRegister;
 }
