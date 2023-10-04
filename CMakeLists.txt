@@ -21,6 +21,7 @@ SET(LIBPNG_SRC
         ${GPAC_LOCATION}/src/filters/enc_png.c
         ${CMAKE_SOURCE_DIR}/filters/png/dec_png.c
         ${CMAKE_SOURCE_DIR}/filters/png/reframe_png.c
+        ${CMAKE_SOURCE_DIR}/filters/common/convert.c
 )
 
 SET(LIBPNG_LIBS
@@ -54,6 +55,7 @@ SET(JPEG_SRC
         ${GPAC_LOCATION}/src/filters/enc_jpg.c
         ${CMAKE_SOURCE_DIR}/filters/jpeg/dec_jpeg.c
         ${CMAKE_SOURCE_DIR}/filters/jpeg/reframe_jpeg.c
+        ${CMAKE_SOURCE_DIR}/filters/common/convert.c
 )
 
 add_filter(libjpeg

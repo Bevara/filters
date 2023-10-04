@@ -5,8 +5,11 @@ typedef struct
 {
 	u32 codecid;
 	GF_FilterPid *ipid, *opid;
-	u32 width, height, pixel_format, BPP;
+	u32 width, height, pixel_format, in_BPP, out_BPP;
+	u32 ofmt;
 } GF_PNGDecCtx;
+
+GF_Err convert(char* out, u32 out_format, const char* in, u32 in_format, u32 count);
 
 static GF_Err pngdec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 {
@@ -40,7 +43,12 @@ static GF_Err pngdec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is
 	// copy properties at init or reconfig
 	gf_filter_pid_copy_properties(ctx->opid, ctx->ipid);
 	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_CODECID, &PROP_UINT(GF_CODECID_RAW));
-	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(GF_PIXEL_RGB));
+
+	if (!ctx->ofmt) {
+        ctx->ofmt = GF_PIXEL_RGB;
+    }
+
+	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(ctx->ofmt));
 
 	if (ctx->codecid == GF_CODECID_PNG)
 	{
@@ -49,6 +57,18 @@ static GF_Err pngdec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is
 	return GF_OK;
 }
 
+static GF_Err pngdec_reconfigure_output(GF_Filter *filter, GF_FilterPid *pid)
+{
+	const GF_PropertyValue *p;
+	GF_PNGDecCtx *ctx = gf_filter_get_udta(filter);
+	if (ctx->opid != pid) return GF_BAD_PARAM;
+
+	p = gf_filter_pid_caps_query(pid, GF_PROP_PID_PIXFMT);
+	if (p) ctx->ofmt = p->value.uint;
+	return pngdec_configure_pid(filter, ctx->ipid, GF_FALSE);
+}
+
+
 static GF_Err pngdec_process(GF_Filter *filter)
 {
 	GF_Err e;
@@ -56,6 +76,7 @@ static GF_Err pngdec_process(GF_Filter *filter)
 	u8 *data, *output;
 	u32 size;
 	GF_PNGDecCtx *ctx = (GF_PNGDecCtx *)gf_filter_get_udta(filter);
+	Bool need_conversion = GF_FALSE;
 
 	pck = gf_filter_pid_get_packet(ctx->ipid);
 	if (!pck)
@@ -71,9 +92,10 @@ static GF_Err pngdec_process(GF_Filter *filter)
 
 	GF_FilterPacket *dst_pck;
 	u32 out_size = 0;
+	u32 in_size = 0;
 	u32 w = ctx->width;
 	u32 h = ctx->height;
-	u32 pf = ctx->pixel_format;
+	u32 pf = ctx->ofmt;
 
 	e = gf_img_png_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, NULL, &out_size);
 
@@ -82,30 +104,65 @@ static GF_Err pngdec_process(GF_Filter *filter)
 		gf_filter_pid_drop_packet(ctx->ipid);
 		return e;
 	}
-	if ((w != ctx->width) || (h != ctx->height) || (pf != ctx->pixel_format))
+	if ((w != ctx->width) || (h != ctx->height)){
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_WIDTH, &PROP_UINT(ctx->width));
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_HEIGHT, &PROP_UINT(ctx->height));
+	} 
+	
+	if (pf != ctx->pixel_format)
 	{
+		need_conversion = GF_TRUE;
+
 		switch (ctx->pixel_format)
 		{
 		case GF_PIXEL_GREYSCALE:
-			ctx->BPP = 1;
+			ctx->in_BPP = 1;
 			break;
 		case GF_PIXEL_RGB:
-			ctx->BPP = 3;
+			ctx->in_BPP = 3;
 			break;
 		case GF_PIXEL_RGBA:
-			ctx->BPP = 4;
+			ctx->in_BPP = 4;
 			break;
 		}
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_WIDTH, &PROP_UINT(ctx->width));
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_HEIGHT, &PROP_UINT(ctx->height));
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(ctx->pixel_format));
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_STRIDE, &PROP_UINT(ctx->BPP * ctx->width));
+		
+		switch (pf)
+		{
+		case GF_PIXEL_GREYSCALE:
+			ctx->out_BPP = 1;
+			break;
+		case GF_PIXEL_RGB:
+			ctx->out_BPP = 3;
+			break;
+		case GF_PIXEL_RGBA:
+			ctx->out_BPP = 4;
+			break;
+		}
+		
+		in_size = ctx->in_BPP * ctx->width * ctx->height;
+		out_size = ctx->out_BPP * ctx->width * ctx->height;
+
+	
+		//gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(ctx->pixel_format));
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_STRIDE, &PROP_UINT(ctx->out_BPP * ctx->width));
 	}
+
 	dst_pck = gf_filter_pck_new_alloc(ctx->opid, out_size, &output);
 	if (!dst_pck)
 		return GF_OUT_OF_MEM;
 
-	e = gf_img_png_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, output, &out_size);
+	if (need_conversion)
+	{
+		u32 *src = (u32 *)gf_malloc(in_size);
+		e = gf_img_png_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, src, &in_size);
+		e = convert(output, ctx->ofmt, src, ctx->pixel_format, ctx->width * ctx->height);
+		gf_free(src);
+	}
+	else
+	{
+		e = gf_img_png_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, output, &out_size);
+	}
+	
 
 	if (e)
 	{
@@ -138,6 +195,7 @@ GF_FilterRegister ImgPngRegister = {
 	.priority = 1,
 	SETCAPS(ImgDecCaps),
 	.configure_pid = pngdec_configure_pid,
+	.reconfigure_output = pngdec_reconfigure_output,
 	.process = pngdec_process,
 };
 

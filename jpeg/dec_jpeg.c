@@ -9,6 +9,8 @@ typedef struct
 	u32 ofmt;
 } GF_JPEGDecCtx;
 
+void convert_rgb_to_rgba(char *rgba, const char *rgb, u32 count);
+
 static GF_Err jpegdec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 {
 	const GF_PropertyValue *prop;
@@ -41,10 +43,11 @@ static GF_Err jpegdec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool i
 	// copy properties at init or reconfig
 	gf_filter_pid_copy_properties(ctx->opid, ctx->ipid);
 	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_CODECID, &PROP_UINT(GF_CODECID_RAW));
-	
-	if (!ctx->ofmt) {
-        ctx->ofmt = GF_PIXEL_RGB;
-    }
+
+	if (!ctx->ofmt)
+	{
+		ctx->ofmt = GF_PIXEL_RGB;
+	}
 	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(ctx->ofmt));
 
 	if (ctx->codecid == GF_CODECID_JPEG)
@@ -59,23 +62,13 @@ static GF_Err jpegdec_reconfigure_output(GF_Filter *filter, GF_FilterPid *pid)
 {
 	const GF_PropertyValue *p;
 	GF_JPEGDecCtx *ctx = gf_filter_get_udta(filter);
-	if (ctx->opid != pid) return GF_BAD_PARAM;
+	if (ctx->opid != pid)
+		return GF_BAD_PARAM;
 
 	p = gf_filter_pid_caps_query(pid, GF_PROP_PID_PIXFMT);
-	if (p) ctx->ofmt = p->value.uint;
+	if (p)
+		ctx->ofmt = p->value.uint;
 	return jpegdec_configure_pid(filter, ctx->ipid, GF_FALSE);
-}
-
-
-static void convert_to_rgba(char* rgba, const char* rgb, const int count) {
-    for(int i=0; i<count; ++i) {
-        for(int j=0; j<3; ++j) {
-            rgba[j] = rgb[j];
-        }
-		rgba[3] = 255;
-        rgba += 4;
-        rgb  += 3;
-    }
 }
 
 static GF_Err jpegdec_process(GF_Filter *filter)
@@ -85,7 +78,7 @@ static GF_Err jpegdec_process(GF_Filter *filter)
 	u8 *data, *output;
 	u32 size;
 	GF_JPEGDecCtx *ctx = (GF_JPEGDecCtx *)gf_filter_get_udta(filter);
-	Bool convert = GF_FALSE;
+	Bool need_conversion = GF_FALSE;
 
 	pck = gf_filter_pid_get_packet(ctx->ipid);
 	if (!pck)
@@ -128,32 +121,30 @@ static GF_Err jpegdec_process(GF_Filter *filter)
 		case GF_PIXEL_RGBA:
 			ctx->BPP = 4;
 			out_size = ctx->BPP * ctx->width * ctx->height;
-			convert = GF_TRUE;
+			need_conversion = GF_TRUE;
 			break;
 		}
 		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_WIDTH, &PROP_UINT(ctx->width));
 		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_HEIGHT, &PROP_UINT(ctx->height));
-		//gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(pf));
+		// gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(pf));
 		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_STRIDE, &PROP_UINT(ctx->BPP * ctx->width));
 	}
 	dst_pck = gf_filter_pck_new_alloc(ctx->opid, out_size, &output);
 	if (!dst_pck)
 		return GF_OUT_OF_MEM;
 
-	if (ctx->codecid == GF_CODECID_JPEG)
+	if (need_conversion)
 	{
-		if(convert){
-			u32 tmp_out_size = ctx->width * ctx->height * 3;
-			u32* src = (u32*)gf_malloc(ctx->width * ctx->height * 3);
-			e = gf_img_jpeg_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, src, &tmp_out_size, 3);
-			convert_to_rgba(output, src, ctx->width * ctx->height );
-			gf_free(src);
-		}else{
-			e = gf_img_jpeg_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, output, &out_size, ctx->BPP);
-		}
+		u32 tmp_in_size = ctx->width * ctx->height * 3;
+		u32 *src = (u32 *)gf_malloc(tmp_in_size);
+		e = gf_img_jpeg_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, src, &tmp_in_size, 3);
+		convert_rgb_to_rgba(output, src, ctx->width * ctx->height);
+		gf_free(src);
 	}
-
-
+	else
+	{
+		e = gf_img_jpeg_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, output, &out_size, ctx->BPP);
+	}
 
 	if (e)
 	{
