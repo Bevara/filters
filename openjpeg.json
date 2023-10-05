@@ -1,0 +1,9 @@
+{
+    "name": "openjpeg",
+    "description": "JP2000 decoder",
+    "filters":["rfjp2"],
+    "help": "This filter decodes JPEG2000 streams through OpenJPEG library.",
+    "support": [
+        "image"
+    ]
+}

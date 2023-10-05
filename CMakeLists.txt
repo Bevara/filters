@@ -96,6 +96,28 @@ add_filter(libjxl
         ""
         "1")
 
+SET(OPENJPEG_INC
+        ${THIRD_PARTIES}/openjpeg/src/lib/openjp2
+        ${THIRD_PARTIES_BINARIES}/openjpeg/src/lib/openjp2
+)
+
+SET(OPENJPEG_LIB
+        ${THIRD_PARTIES_BINARIES}/openjpeg/bin/libopenjp2.a
+)
+
+SET(OPENJPEG_SRC
+        ${CMAKE_SOURCE_DIR}/filters/jp2/reframe_jp2.c
+)
+
+add_filter(openjpeg
+        "${OPENJPEG_SRC}"
+        "${OPENJPEG_LIB}"
+        ['_dynCall_j2kdec_register']
+        ""
+        "${OPENJPEG_INC}"
+        ""
+        "1")
+
 # Should always be at the end of this file
 set(WASM_FILES ${WASM_FILES} PARENT_SCOPE)
 
