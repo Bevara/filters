@@ -34,7 +34,7 @@ add_filter(libpng
         ['_dynCall_pngenc_register','_dynCall_pngdec_register','_dynCall_png_reframe_register']
         GPAC_HAS_PNG
         "${PNG_INC}"
-        ""
+        "-s USE_ZLIB=1"
         "1")
 
         SET(JPGENC_SRC
