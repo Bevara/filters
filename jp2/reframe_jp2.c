@@ -403,6 +403,11 @@ static const char *jp2_probe_data(const u8 *data, u32 size, GF_FilterProbeScore 
 			gf_bs_del(bs);
 			return "image/jp2";
 		}
+	}else if (bsize == 0xFF4FFF51 ) {
+			/* Start-of-codestream (SOC) + Image size (SIZ) magic number */
+			*score = GF_FPROBE_FORCE;
+			gf_bs_del(bs);
+			return "image/jp2";
 	}
 	gf_bs_del(bs);
 	return NULL;
