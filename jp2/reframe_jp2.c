@@ -3,6 +3,108 @@
 #include <gpac/constants.h>
 #include <gpac/avparse.h>
 
+#ifdef GPAC_HAS_JP2
+
+// we MUST set OPJ_STATIC before including openjpeg.h
+#if !defined(__GNUC__) && (defined(_WIN32_WCE) || defined(WIN32))
+#define OPJ_STATIC
+#endif
+
+#include <gpac/constants.h>
+#include <gpac/bitstream.h>
+#include <gpac/isomedia.h>
+
+#include <openjpeg.h>
+
+#ifdef OPJ_PROFILE_NONE
+#define OPENJP2 1
+
+#if !defined(__GNUC__) && (defined(_WIN32_WCE) || defined(WIN32))
+#if defined(_DEBUG)
+#pragma comment(lib, "libopenjp2d")
+#else
+#pragma comment(lib, "libopenjp2")
+#endif
+#endif
+
+#else
+
+#define OPENJP2 0
+
+#if !defined(__GNUC__) && (defined(_WIN32_WCE) || defined(WIN32))
+#if defined(_DEBUG)
+#pragma comment(lib, "LibOpenJPEGd")
+#else
+#pragma comment(lib, "LibOpenJPEG")
+#endif
+#endif
+
+#endif
+#endif
+
+#if OPENJP2
+typedef struct
+{
+	char *data;
+	u32 len, pos;
+} OJP2Frame;
+
+static OPJ_SIZE_T j2kdec_stream_read(void *out_buffer, OPJ_SIZE_T nb_bytes, void *user_data)
+{
+	OJP2Frame *frame = user_data;
+	u32 remain;
+	if (frame->pos == frame->len)
+		return (OPJ_SIZE_T)-1;
+	remain = frame->len - frame->pos;
+	if (nb_bytes > remain)
+		nb_bytes = remain;
+	memcpy(out_buffer, frame->data + frame->pos, nb_bytes);
+	frame->pos += (u32)nb_bytes;
+	return nb_bytes;
+}
+
+static OPJ_OFF_T j2kdec_stream_skip(OPJ_OFF_T nb_bytes, void *user_data)
+{
+	OJP2Frame *frame = user_data;
+	if (!user_data)
+		return 0;
+
+	if (nb_bytes < 0)
+	{
+		if (frame->pos == 0)
+			return (OPJ_SIZE_T)-1;
+		if (nb_bytes + (s32)frame->pos < 0)
+		{
+			nb_bytes = -frame->pos;
+		}
+	}
+	else
+	{
+		u32 remain;
+		if (frame->pos == frame->len)
+		{
+			return (OPJ_SIZE_T)-1;
+		}
+		remain = frame->len - frame->pos;
+		if (nb_bytes > remain)
+		{
+			nb_bytes = remain;
+		}
+	}
+	frame->pos += (u32)nb_bytes;
+	return nb_bytes;
+}
+
+static OPJ_BOOL j2kdec_stream_seek(OPJ_OFF_T nb_bytes, void *user_data)
+{
+	OJP2Frame *frame = user_data;
+	if (nb_bytes < 0 || nb_bytes > frame->pos)
+		return OPJ_FALSE;
+	frame->pos = (u32)nb_bytes;
+	return OPJ_TRUE;
+}
+#endif
+
 typedef struct
 {
 	// options
@@ -127,109 +229,156 @@ GF_Err jp2_process(GF_Filter *filter)
 		gf_img_parse(bs, &codecid, &w, &h, &dsi, &dsi_size);
 		gf_bs_del(bs);
 
-		prop = gf_filter_pid_get_property(ctx->ipid, GF_PROP_PID_FILE_EXT);
-		ext = (prop && prop->value.string) ? prop->value.string : "";
-		prop = gf_filter_pid_get_property(ctx->ipid, GF_PROP_PID_MIME);
-		mime = (prop && prop->value.string) ? prop->value.string : "";
-
-		if (!codecid)
+#ifdef GPAC_HAS_JP2
+		if (!dsi)
 		{
-			if (!stricmp(ext, "jp2") || !stricmp(ext, "j2k") || !strcmp(mime, "image/jp2"))
+			// This is a j2k file FIXME : this could be handled by the decoder
+			opj_codec_t *codec;
+			opj_stream_t *stream;
+			opj_dparameters_t parameters;
+			OJP2Frame ojp2frame;
+			opj_image_t *image = NULL;
+
+			opj_set_default_decoder_parameters(&parameters);
+			codec = opj_create_decompress(OPJ_CODEC_J2K);
+			opj_setup_decoder(codec, &parameters);
+			stream = opj_stream_default_create(OPJ_STREAM_READ);
+			opj_stream_set_read_function(stream, j2kdec_stream_read);
+			opj_stream_set_skip_function(stream, j2kdec_stream_skip);
+			opj_stream_set_seek_function(stream, j2kdec_stream_seek);
+			ojp2frame.data = data;
+			ojp2frame.len = size;
+			ojp2frame.pos = 0;
+
+			opj_stream_set_user_data(stream, &ojp2frame, NULL);
+			opj_stream_set_user_data_length(stream, ojp2frame.len);
+			opj_read_header(stream, codec, &image);
+
+			switch (image->numcomps)
 			{
-				codecid = GF_CODECID_J2K;
+			case 1:
+				pf = GF_PIXEL_GREYSCALE;
+				break;
+			case 2:
+				pf = GF_PIXEL_ALPHAGREY;
+				break;
+			case 3:
+				pf = GF_PIXEL_RGB;
+				break;
+			case 4:
+				pf = GF_PIXEL_RGBA;
+				break;
 			}
-		}
-		if (!codecid)
-		{
-			gf_filter_pid_drop_packet(ctx->ipid);
-			return GF_NOT_SUPPORTED;
-		}
-		ctx->codec_id = codecid;
-		ctx->opid = gf_filter_pid_new(filter);
-		if (!ctx->opid)
-		{
-			gf_filter_pid_drop_packet(ctx->ipid);
-			return GF_SERVICE_ERROR;
-		}
-		if (!ctx->fps.num || !ctx->fps.den)
-		{
-			ctx->fps.num = 1000;
-			ctx->fps.den = 1000;
-		}
-		// we don't have input reconfig for now
-		gf_filter_pid_copy_properties(ctx->opid, ctx->ipid);
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_STREAM_TYPE, &PROP_UINT(GF_STREAM_VISUAL));
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_CODECID, &PROP_UINT(codecid));
-		if (pf)
-			gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(pf));
-		if (w)
-			gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_WIDTH, &PROP_UINT(w));
-		if (h)
-			gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_HEIGHT, &PROP_UINT(h));
 
-		if (dsi)
-			gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_DECODER_CONFIG, &PROP_DATA_NO_COPY(dsi, dsi_size));
-
-		if (!gf_filter_pid_get_property(ctx->ipid, GF_PROP_PID_TIMESCALE))
-		{
-			gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_TIMESCALE, &PROP_UINT(ctx->fps.num));
-			ctx->owns_timescale = GF_TRUE;
+			opj_image_destroy(image);
+			opj_stream_destroy(stream);
+			opj_destroy_codec(codec);
 		}
+#endif
 
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_NB_FRAMES, &PROP_UINT(1));
-		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PLAYBACK_MODE, &PROP_UINT(GF_PLAYBACK_MODE_FASTFORWARD));
+	prop = gf_filter_pid_get_property(ctx->ipid, GF_PROP_PID_FILE_EXT);
+	ext = (prop && prop->value.string) ? prop->value.string : "";
+	prop = gf_filter_pid_get_property(ctx->ipid, GF_PROP_PID_MIME);
+	mime = (prop && prop->value.string) ? prop->value.string : "";
 
-		if (ext || mime)
-			gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_CAN_DATAREF, &PROP_BOOL(GF_TRUE));
+	if (!codecid)
+	{
+		if (!stricmp(ext, "jp2") || !stricmp(ext, "j2k") || !strcmp(mime, "image/jp2"))
+		{
+			codecid = GF_CODECID_J2K;
+		}
+	}
+	if (!codecid)
+	{
+		gf_filter_pid_drop_packet(ctx->ipid);
+		return GF_NOT_SUPPORTED;
+	}
+	ctx->codec_id = codecid;
+	ctx->opid = gf_filter_pid_new(filter);
+	if (!ctx->opid)
+	{
+		gf_filter_pid_drop_packet(ctx->ipid);
+		return GF_SERVICE_ERROR;
+	}
+	if (!ctx->fps.num || !ctx->fps.den)
+	{
+		ctx->fps.num = 1000;
+		ctx->fps.den = 1000;
+	}
+	// we don't have input reconfig for now
+	gf_filter_pid_copy_properties(ctx->opid, ctx->ipid);
+	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_STREAM_TYPE, &PROP_UINT(GF_STREAM_VISUAL));
+	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_CODECID, &PROP_UINT(codecid));
+	if (pf)
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(pf));
+	if (w)
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_WIDTH, &PROP_UINT(w));
+	if (h)
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_HEIGHT, &PROP_UINT(h));
+
+	if (dsi)
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_DECODER_CONFIG, &PROP_DATA_NO_COPY(dsi, dsi_size));
+
+	if (!gf_filter_pid_get_property(ctx->ipid, GF_PROP_PID_TIMESCALE))
+	{
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_TIMESCALE, &PROP_UINT(ctx->fps.num));
+		ctx->owns_timescale = GF_TRUE;
 	}
 
-	e = GF_OK;
-	u32 start_offset = 0;
-	if (ctx->codec_id == GF_CODECID_J2K)
-	{
+	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_NB_FRAMES, &PROP_UINT(1));
+	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PLAYBACK_MODE, &PROP_UINT(GF_PLAYBACK_MODE_FASTFORWARD));
 
-		if (size < 8)
+	if (ext || mime)
+		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_CAN_DATAREF, &PROP_BOOL(GF_TRUE));
+}
+
+e = GF_OK;
+u32 start_offset = 0;
+if (ctx->codec_id == GF_CODECID_J2K)
+{
+
+	if (size < 8)
+	{
+		gf_filter_pid_drop_packet(ctx->ipid);
+		return GF_NON_COMPLIANT_BITSTREAM;
+	}
+
+	if ((data[4] == 'j') && (data[5] == 'P') && (data[6] == ' ') && (data[7] == ' '))
+	{
+		bs = gf_bs_new(data, size, GF_BITSTREAM_READ);
+		while (gf_bs_available(bs))
+		{
+			u32 bsize = gf_bs_read_u32(bs);
+			u32 btype = gf_bs_read_u32(bs);
+			if (btype == GF_4CC('j', 'p', '2', 'c'))
+			{
+				start_offset = (u32)gf_bs_get_position(bs) - 8;
+				break;
+			}
+			gf_bs_skip_bytes(bs, bsize - 8);
+		}
+		gf_bs_del(bs);
+		if (start_offset >= size)
 		{
 			gf_filter_pid_drop_packet(ctx->ipid);
 			return GF_NON_COMPLIANT_BITSTREAM;
 		}
-
-		if ((data[4] == 'j') && (data[5] == 'P') && (data[6] == ' ') && (data[7] == ' '))
-		{
-			bs = gf_bs_new(data, size, GF_BITSTREAM_READ);
-			while (gf_bs_available(bs))
-			{
-				u32 bsize = gf_bs_read_u32(bs);
-				u32 btype = gf_bs_read_u32(bs);
-				if (btype == GF_4CC('j', 'p', '2', 'c'))
-				{
-					start_offset = (u32)gf_bs_get_position(bs) - 8;
-					break;
-				}
-				gf_bs_skip_bytes(bs, bsize - 8);
-			}
-			gf_bs_del(bs);
-			if (start_offset >= size)
-			{
-				gf_filter_pid_drop_packet(ctx->ipid);
-				return GF_NON_COMPLIANT_BITSTREAM;
-			}
-		}
 	}
-	dst_pck = gf_filter_pck_new_ref(ctx->opid, start_offset, size - start_offset, pck);
-	if (!dst_pck)
-		return GF_OUT_OF_MEM;
+}
+dst_pck = gf_filter_pck_new_ref(ctx->opid, start_offset, size - start_offset, pck);
+if (!dst_pck)
+	return GF_OUT_OF_MEM;
 
-	gf_filter_pck_merge_properties(pck, dst_pck);
-	if (ctx->owns_timescale)
-	{
-		gf_filter_pck_set_cts(dst_pck, 0);
-		gf_filter_pck_set_sap(dst_pck, GF_FILTER_SAP_1);
-		gf_filter_pck_set_duration(dst_pck, ctx->fps.den);
-	}
-	gf_filter_pck_send(dst_pck);
-	gf_filter_pid_drop_packet(ctx->ipid);
-	return e;
+gf_filter_pck_merge_properties(pck, dst_pck);
+if (ctx->owns_timescale)
+{
+	gf_filter_pck_set_cts(dst_pck, 0);
+	gf_filter_pck_set_sap(dst_pck, GF_FILTER_SAP_1);
+	gf_filter_pck_set_duration(dst_pck, ctx->fps.den);
+}
+gf_filter_pck_send(dst_pck);
+gf_filter_pid_drop_packet(ctx->ipid);
+return e;
 }
 
 #include <gpac/internal/isomedia_dev.h>

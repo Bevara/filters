@@ -107,13 +107,14 @@ SET(OPENJPEG_LIB
 
 SET(OPENJPEG_SRC
         ${CMAKE_SOURCE_DIR}/filters/jp2/reframe_jp2.c
+        ${GPAC_LOCATION}/src/filters/dec_j2k.c
 )
 
 add_filter(openjpeg
         "${OPENJPEG_SRC}"
         "${OPENJPEG_LIB}"
-        ['_dynCall_j2kdec_register']
-        ""
+        ['_dynCall_jp2_reframe_register','_dynCall_j2kdec_register']
+        GPAC_HAS_JP2
         "${OPENJPEG_INC}"
         ""
         "1")
