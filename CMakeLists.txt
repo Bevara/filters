@@ -119,6 +119,23 @@ add_filter(openjpeg
         ""
         "1")
 
+SET(QDBMP_SRC
+        ${CMAKE_SOURCE_DIR}/filters/bmp/qdbmp.c
+)
+
+SET(QDBMP_INC
+        ${THIRD_PARTIES}/qdbmp
+)
+
+add_filter(qdbmp
+        "${QDBMP_SRC}"
+        ""
+        ['_dynCall_QDBMP_register']
+        ""
+        "${QDBMP_INC}"
+        ""
+        "1")
+
 # Should always be at the end of this file
 set(WASM_FILES ${WASM_FILES} PARENT_SCOPE)
 

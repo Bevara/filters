@@ -1,0 +1,9 @@
+{
+    "name": "qdbmp",
+    "description": "Quick n' Dirty BMP Library",
+    "filters":["QDBMP"],
+    "help": "QDBMP (Quick n' Dirty BMP) is a minimalistic C library for handling BMP image files.",
+    "support": [
+        "image"
+    ]
+}

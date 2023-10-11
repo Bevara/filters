@@ -44,7 +44,7 @@ typedef struct
 	Bool is_playing;
 } GF_ReframeJxlCtx;
 
-GF_Err rfjxl_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
+static GF_Err rfjxl_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 {
 	GF_ReframeJxlCtx *ctx = gf_filter_get_udta(filter);
 	const GF_PropertyValue *p;
@@ -77,7 +77,7 @@ GF_Err rfjxl_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 	return GF_OK;
 }
 
-Bool rfjxl_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
+static Bool rfjxl_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
 {
 	GF_FilterEvent fevt;
 	GF_ReframeJxlCtx *ctx = gf_filter_get_udta(filter);
@@ -112,7 +112,7 @@ Bool rfjxl_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
 	return GF_TRUE;
 }
 
-GF_Err rfjxl_process(GF_Filter *filter)
+static GF_Err rfjxl_process(GF_Filter *filter)
 {
 	GF_ReframeJxlCtx *ctx = gf_filter_get_udta(filter);
 	GF_FilterPacket *pck, *dst_pck;

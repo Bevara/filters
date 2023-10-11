@@ -19,7 +19,7 @@ typedef struct
 	Bool is_playing;
 } GF_ReframeImgCtx;
 
-GF_Err png_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
+static GF_Err png_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 {
 	GF_ReframeImgCtx *ctx = gf_filter_get_udta(filter);
 	const GF_PropertyValue *p;
@@ -52,7 +52,7 @@ GF_Err png_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is_remove)
 	return GF_OK;
 }
 
-Bool png_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
+static Bool png_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
 {
 	GF_FilterEvent fevt;
 	GF_ReframeImgCtx *ctx = gf_filter_get_udta(filter);
@@ -87,7 +87,7 @@ Bool png_process_event(GF_Filter *filter, const GF_FilterEvent *evt)
 	return GF_TRUE;
 }
 
-GF_Err png_process(GF_Filter *filter)
+static GF_Err png_process(GF_Filter *filter)
 {
 	GF_ReframeImgCtx *ctx = gf_filter_get_udta(filter);
 	GF_FilterPacket *pck, *dst_pck;
