@@ -1,7 +1,7 @@
 {
     "name": "ffmpeg",
     "description": "ffmpeg decoders",
-    "filters":["ffavf","ffbsf","ffdec","ffdmx","ffenc","ffmx","ffsws"],
+    "filters":["ffavf","ffbsf","ffdec","ffdmx","ffenc","ffmx","ffsws","rfmpgvid","rfnalu","mp4mx","m2tsmx","m2psdmx"],
     "help": "This filter decodes MPEG-1 and wav streams through ffmpeg library.",
     "support": [
         "audio",
