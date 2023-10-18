@@ -136,6 +136,43 @@ add_filter(qdbmp
         ""
         "1")
 
+
+# SET(FF_SRC
+#         ${GPAC_LOCATION}/src/filters/ff_dec.c
+#         ${GPAC_LOCATION}/src/filters/ff_enc.c
+#         ${GPAC_LOCATION}/src/filters/ff_avf.c
+#         ${GPAC_LOCATION}/src/filters/ff_dmx.c
+#         ${GPAC_LOCATION}/src/filters/ff_rescale.c
+#         ${GPAC_LOCATION}/src/filters/ff_common.c
+#         ${GPAC_LOCATION}/src/filters/ff_mx.c
+# )
+
+# SET(FF_INCLUDE
+#         ${THIRD_PARTIES}/ffmpeg
+#         ${THIRD_PARTIES_BINARIES}/ffmpeg
+#         ${THIRD_PARTIES}/x264
+#         ${THIRD_PARTIES_BINARIES}/x264
+# )
+
+# SET(FF_LIB
+#         ${THIRD_PARTIES_BINARIES}/ffmpeg/libavcodec/libavcodec.a
+#         ${THIRD_PARTIES_BINARIES}/ffmpeg/libavutil/libavutil.a
+#         ${THIRD_PARTIES_BINARIES}/ffmpeg/libavformat/libavformat.a
+#         ${THIRD_PARTIES_BINARIES}/ffmpeg/libavfilter/libavfilter.a
+#         ${THIRD_PARTIES_BINARIES}/ffmpeg/libswresample/libswresample.a
+#         ${THIRD_PARTIES_BINARIES}/ffmpeg/libswscale/libswscale.a
+#         ${THIRD_PARTIES_BINARIES}/x264/libx264.a
+# )
+
+# add_filter(ffmpeg
+#         "${FF_SRC}"
+#         "${FF_LIB}"
+#         ['_dynCall_ffdec_register','_dynCall_ffenc_register','_dynCall_ffbsf_register','_dynCall_ffavf_register','_dynCall_ffdmx_register','_dynCall_ffsws_register','_dynCall_ffmx_register']
+#         GPAC_HAS_FFMPEG
+#         "${FF_INCLUDE}"
+#         ""
+#         "1")
+        
 # Should always be at the end of this file
 set(WASM_FILES ${WASM_FILES} PARENT_SCOPE)
 

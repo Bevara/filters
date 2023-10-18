@@ -1,0 +1,10 @@
+{
+    "name": "ffmpeg",
+    "description": "ffmpeg decoders",
+    "filters":["ffavf","ffbsf","ffdec","ffdmx","ffenc","ffmx","ffsws"],
+    "help": "This filter decodes MPEG-1 and wav streams through ffmpeg library.",
+    "support": [
+        "audio",
+        "video"
+    ]
+}
