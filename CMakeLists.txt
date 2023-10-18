@@ -147,6 +147,7 @@ SET(FF_SRC
         ${GPAC_LOCATION}/src/filters/ff_mx.c
         ${GPAC_LOCATION}/src/filters/reframe_mpgvid.c
         ${GPAC_LOCATION}/src/filters/reframe_nalu.c
+        ${GPAC_LOCATION}/src/filters/reframe_flac.c
         ${GPAC_LOCATION}/src/filters/mux_isom.c
         ${GPAC_LOCATION}/src/filters/mux_ts.c
         ${GPAC_LOCATION}/src/filters/dmx_mpegps.c
@@ -179,7 +180,7 @@ SET(FF_LIB
 add_filter(ffmpeg
         "${FF_SRC}"
         "${FF_LIB}"
-        ['_dynCall_ffdec_register','_dynCall_ffenc_register','_dynCall_ffbsf_register','_dynCall_ffavf_register','_dynCall_ffdmx_register','_dynCall_ffsws_register','_dynCall_ffmx_register','_dynCall_mpgviddmx_register','_dynCall_mp4_mux_register','_dynCall_naludmx_register','_dynCall_m2psdmx_register']
+        ['_dynCall_ffdec_register','_dynCall_ffenc_register','_dynCall_ffbsf_register','_dynCall_ffavf_register','_dynCall_ffdmx_register','_dynCall_ffsws_register','_dynCall_ffmx_register','_dynCall_mpgviddmx_register','_dynCall_mp4_mux_register','_dynCall_naludmx_register','_dynCall_m2psdmx_register','_dynCall_flac_dmx_register']
         GPAC_HAS_FFMPEG
         "${FF_INCLUDE}"
         ""
