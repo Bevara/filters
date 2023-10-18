@@ -185,6 +185,21 @@ add_filter(ffmpeg
         "${FF_INCLUDE}"
         ""
         "1")
+
+ SET(RFPCM_SRC
+        ${GPAC_LOCATION}/src/filters/reframe_rawpcm.c
+        ${GPAC_LOCATION}/src/utils/bitstream.c
+        ${GPAC_LOCATION}/src/utils/constants.c
+)
+
+add_filter(rfpcm
+        "${RFPCM_SRC}"
+        ""
+        _dynCall_pcmreframe_register
+        ""
+        ""
+        ""
+        "1")
         
 # Should always be at the end of this file
 set(WASM_FILES ${WASM_FILES} PARENT_SCOPE)
