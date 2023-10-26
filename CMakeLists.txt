@@ -165,6 +165,7 @@ SET(FF_INCLUDE
         ${THIRD_PARTIES_BINARIES}/ffmpeg
         ${THIRD_PARTIES}/x264
         ${THIRD_PARTIES_BINARIES}/x264
+        ${GPAC_LOCATION}/src/filters
 )
 
 SET(FF_LIB
@@ -186,20 +187,24 @@ add_filter(ffmpeg
         ""
         "1")
 
+SET(FF_SRC_FLAC
+        ${CMAKE_SOURCE_DIR}/filters/ffmpeg-flac/ff_dec-flac.c
+        ${GPAC_LOCATION}/src/filters/ff_common.c
+        ${GPAC_LOCATION}/src/filters/reframe_flac.c
+        ${GPAC_LOCATION}/src/utils/bitstream.c
+)
+
 SET(FF_LIB_FLAC
         ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libavcodec/libavcodec.a
         ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libavutil/libavutil.a
         ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libavformat/libavformat.a
         ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libavfilter/libavfilter.a
-        ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libswresample/libswresample.a
-        ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libswscale/libswscale.a
-        ${THIRD_PARTIES_BINARIES}/x264/libx264.a
 )
 
 add_filter(ffmpeg-flac
-        "${FF_SRC}"
+        "${FF_SRC_FLAC}"
         "${FF_LIB_FLAC}"
-        ['_dynCall_ffdec_register','_dynCall_ffenc_register','_dynCall_ffbsf_register','_dynCall_ffavf_register','_dynCall_ffdmx_register','_dynCall_ffsws_register','_dynCall_ffmx_register','_dynCall_mpgviddmx_register','_dynCall_mp4_mux_register','_dynCall_naludmx_register','_dynCall_m2psdmx_register','_dynCall_flac_dmx_register']
+        ['_dynCall_ffdec_flac_register','_dynCall_flac_dmx_register']
         GPAC_HAS_FFMPEG
         "${FF_INCLUDE}"
         ""

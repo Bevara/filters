@@ -1,7 +1,7 @@
 {
     "name": "ffmpeg-flac",
     "description": "ffmpeg flac decoder",
-    "filters":["rfflac","ffdec"],
+    "filters":["rfflac","ffdec-flac"],
     "help": "This is a reduced version of ffmpeg adapted to decode flac content.",
     "support": [
         "audio"
