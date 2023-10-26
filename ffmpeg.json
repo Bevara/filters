@@ -1,9 +1,10 @@
 {
     "name": "ffmpeg",
-    "description": "ffmpeg decoders",
-    "filters":["ffavf","ffbsf","ffdec","ffdmx","ffenc","ffmx","ffsws","rfmpgvid","rfnalu","mp4mx","m2tsmx","m2psdmx"],
-    "help": "This filter decodes MPEG-1 and wav streams through ffmpeg library.",
+    "description": "Full version of ffmpeg with libx264 encoder",
+    "filters":["rfflac", "ffavf","ffbsf","ffdec","ffdmx","ffenc","ffmx","ffsws","rfmpgvid","rfnalu","mp4mx","m2tsmx","m2psdmx"],
+    "help": "This filter decodes streams through ffmpeg library and is also able to encode content to h.264 streams.",
     "support": [
+        "image",
         "audio",
         "video"
     ]
