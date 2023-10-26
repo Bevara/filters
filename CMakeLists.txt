@@ -210,20 +210,28 @@ add_filter(ffmpeg-flac
         ""
         "1")
 
+SET(FF_SRC_MPEG1
+        ${CMAKE_SOURCE_DIR}/filters/ffmpeg-mpeg1/ff_dec-mpeg1.c
+        ${GPAC_LOCATION}/src/filters/ff_common.c
+        ${GPAC_LOCATION}/src/filters/reframe_mpgvid.c
+        ${GPAC_LOCATION}/src/filters/dmx_mpegps.c
+        ${GPAC_LOCATION}/src/media_tools/av_parsers.c
+        ${GPAC_LOCATION}/src/media_tools/media_import.c
+        ${GPAC_LOCATION}/src/media_tools/mpeg2_ps.c
+)
+
 SET(FF_LIB_MPEG1
-        ${THIRD_PARTIES_BINARIES}/ffmpeg/libavcodec/libavcodec.a
-        ${THIRD_PARTIES_BINARIES}/ffmpeg/libavutil/libavutil.a
-        ${THIRD_PARTIES_BINARIES}/ffmpeg/libavformat/libavformat.a
-        ${THIRD_PARTIES_BINARIES}/ffmpeg/libavfilter/libavfilter.a
-        ${THIRD_PARTIES_BINARIES}/ffmpeg/libswresample/libswresample.a
-        ${THIRD_PARTIES_BINARIES}/ffmpeg/libswscale/libswscale.a
-        ${THIRD_PARTIES_BINARIES}/x264/libx264.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1/libavcodec/libavcodec.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1/libavutil/libavutil.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1/libavformat/libavformat.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1/libavfilter/libavfilter.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1/libswscale/libswscale.a
 )
 
 add_filter(ffmpeg-mpeg1
-        "${FF_SRC}"
+        "${FF_SRC_MPEG1}"
         "${FF_LIB_MPEG1}"
-        ['_dynCall_ffdec_register','_dynCall_ffenc_register','_dynCall_ffbsf_register','_dynCall_ffavf_register','_dynCall_ffdmx_register','_dynCall_ffsws_register','_dynCall_ffmx_register','_dynCall_mpgviddmx_register','_dynCall_mp4_mux_register','_dynCall_naludmx_register','_dynCall_m2psdmx_register','_dynCall_flac_dmx_register']
+        ['_dynCall_ffdec_mpeg1_register','_dynCall_mpgviddmx_register','_dynCall_m2psdmx_register']
         GPAC_HAS_FFMPEG
         "${FF_INCLUDE}"
         ""
