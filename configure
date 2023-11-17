@@ -37,7 +37,7 @@ $source_path/third_parties/emsdk/emsdk install $EMSDK_VERS
 $source_path/third_parties/emsdk/emsdk activate $EMSDK_VERS
 . $source_path/third_parties/emsdk/emsdk_env.sh
 
-echo "Configuring player"
+echo "Configuring filters"
 cd $BUILD_DIR
 if test "$debuginfo" = "no"; then
     emcmake cmake $source_path -DDEBUG_MODE=OFF
