@@ -1,8 +1,15 @@
+cmake_minimum_required(VERSION 3.7)
+project(Filters)
+
 include(filters.cmake)
+
+add_definitions(-fpic)
 
 SET(PNG_INC
         ${THIRD_PARTIES}/libpng-code
         ${THIRD_PARTIES_BINARIES}/libpng
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}        
 )
 
 if(DEBUG_MODE)
@@ -19,9 +26,9 @@ endif()
 SET(LIBPNG_SRC
         ${GPAC_LOCATION}/src/media_tools/img.c
         ${GPAC_LOCATION}/src/filters/enc_png.c
-        ${CMAKE_SOURCE_DIR}/filters/png/dec_png.c
-        ${CMAKE_SOURCE_DIR}/filters/png/reframe_png.c
-        ${CMAKE_SOURCE_DIR}/filters/common/convert.c
+        ${CMAKE_SOURCE_DIR}/png/dec_png.c
+        ${CMAKE_SOURCE_DIR}/png/reframe_png.c
+        ${CMAKE_SOURCE_DIR}/common/convert.c
 )
 
 SET(LIBPNG_LIBS
@@ -44,6 +51,8 @@ add_filter(libpng
 SET(JPEG_INC
         ${THIRD_PARTIES}/jpeg-9e
         ${THIRD_PARTIES_BINARIES}/libjpeg
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
 )
 
 SET(JPEG_LIB
@@ -53,9 +62,9 @@ SET(JPEG_LIB
 SET(JPEG_SRC
         ${GPAC_LOCATION}/src/media_tools/img.c
         ${GPAC_LOCATION}/src/filters/enc_jpg.c
-        ${CMAKE_SOURCE_DIR}/filters/jpeg/dec_jpeg.c
-        ${CMAKE_SOURCE_DIR}/filters/jpeg/reframe_jpeg.c
-        ${CMAKE_SOURCE_DIR}/filters/common/convert.c
+        ${CMAKE_SOURCE_DIR}/jpeg/dec_jpeg.c
+        ${CMAKE_SOURCE_DIR}/jpeg/reframe_jpeg.c
+        ${CMAKE_SOURCE_DIR}/common/convert.c
 )
 
 add_filter(libjpeg
@@ -68,8 +77,8 @@ add_filter(libjpeg
         "1")
 
 SET(LIBJXL_SRC
-        ${CMAKE_SOURCE_DIR}/filters/jxl/reframe_jxl.c
-        ${CMAKE_SOURCE_DIR}/filters/jxl/dec_jxl.c
+        ${CMAKE_SOURCE_DIR}/jxl/reframe_jxl.c
+        ${CMAKE_SOURCE_DIR}/jxl/dec_jxl.c
 )
 
 SET(LIBJXL_LIB
@@ -85,6 +94,8 @@ SET(LIBJXL_LIB
 SET(LIBJXL_INC
         ${THIRD_PARTIES}/libjxl/lib/include
         ${THIRD_PARTIES_BINARIES}/libjxl/lib/include
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
 )
 
 add_filter(libjxl
@@ -99,6 +110,8 @@ add_filter(libjxl
 SET(OPENJPEG_INC
         ${THIRD_PARTIES}/openjpeg/src/lib/openjp2
         ${THIRD_PARTIES_BINARIES}/openjpeg/src/lib/openjp2
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
 )
 
 SET(OPENJPEG_LIB
@@ -106,7 +119,7 @@ SET(OPENJPEG_LIB
 )
 
 SET(OPENJPEG_SRC
-        ${CMAKE_SOURCE_DIR}/filters/jp2/reframe_jp2.c
+        ${CMAKE_SOURCE_DIR}/jp2/reframe_jp2.c
         ${GPAC_LOCATION}/src/filters/dec_j2k.c
 )
 
@@ -120,11 +133,13 @@ add_filter(openjpeg
         "1")
 
 SET(QDBMP_SRC
-        ${CMAKE_SOURCE_DIR}/filters/bmp/qdbmp.c
+        ${CMAKE_SOURCE_DIR}/bmp/qdbmp.c
 )
 
 SET(QDBMP_INC
         ${THIRD_PARTIES}/qdbmp
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
 )
 
 add_filter(qdbmp
@@ -166,6 +181,8 @@ SET(FF_INCLUDE
         ${THIRD_PARTIES}/x264
         ${THIRD_PARTIES_BINARIES}/x264
         ${GPAC_LOCATION}/src/filters
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
 )
 
 SET(FF_LIB
@@ -188,7 +205,7 @@ add_filter(ffmpeg
         "1")
 
 SET(FF_SRC_FLAC
-        ${CMAKE_SOURCE_DIR}/filters/ffmpeg-flac/ff_dec-flac.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg-flac/ff_dec-flac.c
         ${GPAC_LOCATION}/src/filters/ff_common.c
         ${GPAC_LOCATION}/src/filters/reframe_flac.c
         ${GPAC_LOCATION}/src/utils/bitstream.c
@@ -211,7 +228,7 @@ add_filter(ffmpeg-flac
         "1")
 
 SET(FF_SRC_MPEG1
-        ${CMAKE_SOURCE_DIR}/filters/ffmpeg-mpeg1/ff_dec-mpeg1.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg-mpeg1/ff_dec-mpeg1.c
         ${GPAC_LOCATION}/src/filters/ff_common.c
         ${GPAC_LOCATION}/src/filters/reframe_mpgvid.c
         ${GPAC_LOCATION}/src/filters/dmx_mpegps.c
@@ -237,18 +254,24 @@ add_filter(ffmpeg-mpeg1
         ""
         "1")
 
- SET(RFPCM_SRC
+SET(RFPCM_SRC
         ${GPAC_LOCATION}/src/filters/reframe_rawpcm.c
         ${GPAC_LOCATION}/src/utils/bitstream.c
         ${GPAC_LOCATION}/src/utils/constants.c
 )
+
+SET(RFPCM_INC
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
+)
+
 
 add_filter(rfpcm
         "${RFPCM_SRC}"
         ""
         _dynCall_pcmreframe_register
         ""
-        ""
+        "${RFPCM_INC}"
         ""
         "1")
 

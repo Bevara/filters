@@ -1,0 +1,53 @@
+#!/bin/bash
+echo "Setting environnement"
+BUILD_DIR=$PWD
+debuginfo="no"
+no_gcc_opt="no"
+
+# Find source path
+source_path="`echo $0 | sed -e 's#/configure##'`"
+source_path_used="yes"
+if test -z "$source_path" -o "$source_path" = "." ; then
+    source_path="`pwd`"
+    source_path_used="no"
+    build_path=$source_path
+else
+    source_path="`cd \"$source_path\"; pwd`"
+    build_path="`pwd`"
+fi
+
+for opt do
+    case "$opt" in
+        --enable-debug) debuginfo="yes"; no_gcc_opt="yes"
+            ;;
+    esac
+done
+
+for opt do
+    case "$opt" in
+        --enable-debug) debuginfo="yes"; no_gcc_opt="yes"
+            ;;
+    esac
+done
+
+echo "Downloading and building dependencies"
+git submodule update --init --recursive
+if test "$debuginfo" = "no"; then
+    $source_path/third_parties/build_thirdparties.sh
+else
+    $source_path/third_parties/build_thirdparties.sh --enable-debug
+fi
+
+echo "Configuring emsdk"
+source $source_path/third_parties/emsdk_vers.txt
+$source_path/third_parties/emsdk/emsdk install $EMSDK_VERS
+$source_path/third_parties/emsdk/emsdk activate $EMSDK_VERS
+. $source_path/third_parties/emsdk/emsdk_env.sh
+
+echo "Configuring player"
+cd $BUILD_DIR
+if test "$debuginfo" = "no"; then
+    emcmake cmake $source_path -DDEBUG_MODE=OFF
+else
+    emcmake cmake $source_path -DDEBUG_MODE=ON
+fi
