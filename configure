@@ -23,13 +23,6 @@ for opt do
     esac
 done
 
-for opt do
-    case "$opt" in
-        --enable-debug) debuginfo="yes"; no_gcc_opt="yes"
-            ;;
-    esac
-done
-
 echo "Downloading and building dependencies"
 git submodule update --init --recursive
 if test "$debuginfo" = "no"; then
