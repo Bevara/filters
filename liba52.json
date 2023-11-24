@@ -1,0 +1,9 @@
+{
+    "name": "liba52",
+    "description": "A52 decoder",
+    "filters":["rfac3","a52dec"],
+    "help": "This filter decodes AC3 streams through a52dec library.",
+    "support": [
+        "audio"
+    ]
+}

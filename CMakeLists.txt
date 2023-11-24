@@ -275,7 +275,33 @@ add_filter(rfpcm
         ""
         "1")
 
-        
+SET(LIBA52_SRC
+        ${GPAC_LOCATION}/src/filters/dec_ac52.c
+        ${GPAC_LOCATION}/src/filters/reframe_ac3.c
+        ${GPAC_LOCATION}/src/media_tools/av_parsers.c
+        ${GPAC_LOCATION}/src/utils/bitstream.c
+        ${GPAC_LOCATION}/src/odf/descriptors.c
+)
+
+SET(LIBA52_INCLUDE
+        ${GPAC_BINARIES}
+        ${GPAC_LOCATION}/include
+        ${THIRD_PARTIES}/a52dec-0.7.4/include
+)
+
+SET(LIBA52_LIB
+        ${THIRD_PARTIES_BINARIES}/liba52/liba52/.libs/liba52.a
+)
+
+add_filter(liba52
+        "${LIBA52_SRC}"
+        "${LIBA52_LIB}"
+        ['_dynCall_rfac3_register','_dynCall_a52dec_register']
+        GPAC_HAS_LIBA52
+        "${LIBA52_INCLUDE}"
+        ""
+        "1")
+
 # Should always be at the end of this file
 set(WASM_FILES ${WASM_FILES} PARENT_SCOPE)
 
