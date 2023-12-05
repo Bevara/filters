@@ -5,5 +5,6 @@
     "help": "This filter decodes JXL images using libjxl.",
     "support": [
         "image"
-    ]
+    ],
+    "sources":"https://bevara.ddns.net/sources/libjxl.accessor"
 }

@@ -5,5 +5,6 @@
     "help": "This filter encodes and decodes to PNG using libpng.",
     "support": [
         "image"
-    ]
+    ],
+    "sources":"https://bevara.ddns.net/sources/libpng.accessor"   
 }

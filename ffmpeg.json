@@ -7,5 +7,6 @@
         "image",
         "audio",
         "video"
-    ]
+    ],
+    "sources":"https://bevara.ddns.net/sources/ffmpeg.accessor"
 }
