@@ -6,5 +6,9 @@
     "support": [
         "image"
     ],
-    "sources":"https://bevara.ddns.net/sources/libjxl.accessor"
+    "sources":"https://bevara.ddns.net/sources/libjxl.accessor",
+    "filter_source":{
+        "jxldec" : "https://bevara.ddns.net/sources/filters/dec_jxl.c",
+        "rfjxl" : "https://bevara.ddns.net/sources/filters/reframe_jxl.c"
+    }
 }
