@@ -6,5 +6,9 @@
     "support": [
         "audio"
     ],
-    "sources":"https://bevara.ddns.net/sources/ffmpeg-flac.accessor"
+    "sources":"https://bevara.ddns.net/sources/ffmpeg-flac.accessor",
+    "filter_source":{
+        "rfflac" : "reframe_flac.c",
+        "ffdec-flac" : "ff_dec-flac.c"
+    }
 }

@@ -6,5 +6,8 @@
     "support": [
         "image"
     ],
-    "sources":"https://bevara.ddns.net/sources/qdbmp.accessor"
+    "sources":"https://bevara.ddns.net/sources/qdbmp.accessor",
+    "filter_source":{
+        "QDBMP" : "qdbmp.c"
+    }
 }

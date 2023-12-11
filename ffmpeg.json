@@ -8,5 +8,20 @@
         "audio",
         "video"
     ],
-    "sources":"https://bevara.ddns.net/sources/ffmpeg.accessor"
+    "sources":"https://bevara.ddns.net/sources/ffmpeg.accessor",
+    "filter_source":{
+        "rfflac" : "reframe_flac.c",
+        "ffavf" : "ff_avf.c",
+        "ffbsf" : "ff_bsf.c",
+        "ffdec" : "ff_dec.c",
+        "ffdmx" : "ff_dmx.c",
+        "ffenc" : "ff_enc.c",
+        "ffsws" : "ff_rescale.c",
+        "ffmx" : "ff_mx.c",
+        "rfnalu" : "reframe_nalu.c",
+        "mp4mx" : "mux_isom.c",
+        "rfmpgvid" : "reframe_mpgvid.c",
+        "m2tsmx" : "mux_ts.c",
+        "m2psdmx" : "dmx_mpegps.c"
+    }
 }

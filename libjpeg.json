@@ -6,5 +6,10 @@
     "support": [
         "image"
     ],
-    "sources":"https://bevara.ddns.net/sources/libjpeg.accessor"
+    "sources":"https://bevara.ddns.net/sources/libjpeg.accessor",
+    "filter_source":{
+        "rfjpeg" : "reframe_jpeg.c",
+        "jpegdec" : "dec_jpeg.c",
+        "encjpg" : "enc_jpg.c"
+    }
 }

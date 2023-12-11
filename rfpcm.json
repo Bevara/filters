@@ -6,5 +6,8 @@
     "support": [
         "audio"
     ],
-    "sources":"https://bevara.ddns.net/sources/rfpcm.accessor"
+    "sources":"https://bevara.ddns.net/sources/rfpcm.accessor",
+    "filter_source":{
+        "rfpcm" : "reframe_rawpcm.c"
+    }
 }

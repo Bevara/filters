@@ -6,5 +6,10 @@
     "support": [
         "video"
     ],
-    "sources":"https://bevara.ddns.net/sources/ffmpeg-mpeg1.accessor"
+    "sources":"https://bevara.ddns.net/sources/ffmpeg-mpeg1.accessor",
+    "filter_source":{
+        "ffdec" : "ff_dec-mpeg1.c",
+        "rfmpgvid" : "reframe_mpegvid.c",
+        "m2psdmx" : "dmx_mpegps.c"
+    }
 }

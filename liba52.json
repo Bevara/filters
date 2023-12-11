@@ -6,5 +6,9 @@
     "support": [
         "audio"
     ],
-    "sources":"https://bevara.ddns.net/sources/liba52.accessor"
+    "sources":"https://bevara.ddns.net/sources/liba52.accessor",
+    "filter_source":{
+        "rfac3" : "reframe_ac3.c",
+        "a52dec" : "dec_ac52.c"
+    }
 }
