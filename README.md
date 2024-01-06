@@ -1,6 +1,6 @@
 # Bevara filters
 
-This is repository allows building existing accessors or create new ones. 
+This is repository allows building existing accessors or creating new ones. By creating or modifying any filters, you agree to be bound by the Developer's EULA as found at: https://bevara.com/terms_of_service/. You further agree to be boudn by the licenses in LICENSE.txt.
 
 ## Build
 
@@ -29,4 +29,4 @@ add_filter(
     version_number
 )
 
-Please refers to the [Bevara documentation](https://bevara.com/documentation/develop/) to get support.
+Please refer to the [Bevara documentation](https://bevara.com/documentation/develop/) for support.
