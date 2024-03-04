@@ -1,4 +1,9 @@
 /*
+  This is a subset of the dcraw.c raw photo decoder. This handles Canon files, and includes 
+  additions to handle metadata. 
+  */
+
+ /*
    dcraw.c -- Dave Coffin's raw photo decoder
    Copyright 1997-2015 by Dave Coffin, dcoffin a cybercom o net
 
@@ -59,7 +64,7 @@
 
 
 // Bevara uses some specific globals
-#include "raw_acc.h"
+#include "rawDecode.h"
 int numComponents; // this stores the number of thumbs+mains+XMPs+meta
 int outwidth, outheight, outsize;
 unsigned char* outbuf;
