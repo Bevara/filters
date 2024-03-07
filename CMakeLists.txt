@@ -310,6 +310,38 @@ add_filter(liba52
         ""
         "1")
 
+
+SET(VORBIS_SRC
+        ${GPAC_LOCATION}/src/filters/dmx_ogg.c
+        ${GPAC_LOCATION}/src/filters/dec_vorbis.c
+        ${GPAC_LOCATION}/src/media_tools/gpac_ogg.c
+        ${GPAC_LOCATION}/src/media_tools/av_parsers.c
+)
+
+SET(VORBIS_INCLUDE
+        ${THIRD_PARTIES}/ogg/include
+        ${THIRD_PARTIES_BINARIES}/ogg/include
+        ${THIRD_PARTIES}/vorbis/include
+)
+
+SET(VORBIS_LIB
+        ${THIRD_PARTIES_BINARIES}/vorbis/lib/libvorbis.a
+        ${THIRD_PARTIES_BINARIES}/ogg/libogg.a
+)
+
+SET(VORBIS_FLAG
+        GPAC_HAS_VORBIS
+)
+
+add_filter(vorbis
+        "${VORBIS_SRC}"
+        "${VORBIS_LIB}"
+        ['_dynCall_vorbisdec_register','_dynCall_oggdmx_register']
+        "${VORBIS_FLAG}"
+        "${VORBIS_INCLUDE}"
+        ""
+        "1")
+
 # Should always be at the end of this file
 set(WASM_FILES ${WASM_FILES} PARENT_SCOPE)
 
