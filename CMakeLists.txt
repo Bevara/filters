@@ -235,6 +235,14 @@ add_filter(ffmpeg-flac
         ""
         "1")
 
+SET(FF_INCLUDE_MPEG1
+        ${THIRD_PARTIES}/ffmpeg
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1
+        ${GPAC_LOCATION}/src/filters
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
+)
+
 SET(FF_SRC_MPEG1
         ${CMAKE_SOURCE_DIR}/ffmpeg-mpeg1/ff_dec-mpeg1.c
         ${GPAC_LOCATION}/src/filters/ff_common.c
@@ -258,7 +266,7 @@ add_filter(ffmpeg-mpeg1
         "${FF_LIB_MPEG1}"
         ['_dynCall_ffdec_mpeg1_register','_dynCall_mpgviddmx_register','_dynCall_m2psdmx_register']
         GPAC_HAS_FFMPEG
-        "${FF_INCLUDE}"
+        "${FF_INCLUDE_MPEG1}"
         ""
         "1")
 
@@ -319,6 +327,8 @@ SET(VORBIS_SRC
 )
 
 SET(VORBIS_INCLUDE
+        ${GPAC_BINARIES}
+        ${GPAC_LOCATION}/include
         ${THIRD_PARTIES}/ogg/include
         ${THIRD_PARTIES_BINARIES}/ogg/include
         ${THIRD_PARTIES}/vorbis/include

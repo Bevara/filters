@@ -1,0 +1,14 @@
+{
+    "name": "vorbis",
+    "description": "vorbis decoder",
+    "filters":["oggdmx","vorbisdec"],
+    "help": "This filter decodes Ogg and Vorbis streams through libogg and libvorbis library.",
+    "support": [
+        "audio"
+    ],
+    "sources":"https://bevara.ddns.net/sources/vorbis.accessor",
+    "filter_source":{
+        "oggdmx" : "dmx_ogg.c",
+        "vorbisdec" : "dec_vorbis.c"
+    }
+}
