@@ -24,7 +24,7 @@ for opt do
 done
 
 echo "Downloading and building dependencies"
-git submodule update --init --recursive
+# git submodule update --init --recursive
 if test "$debuginfo" = "no"; then
     $source_path/third_parties/build_thirdparties.sh
 else
