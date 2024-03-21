@@ -193,7 +193,7 @@ GF_FilterRegister JpegDecRegister = {
 	.process = jpegdec_process,
 };
 
-const GF_FilterRegister *dynCall_jpegdec_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_jpegdec_register(GF_FilterSession *session)
 {
 	return &JpegDecRegister;
 }

@@ -450,7 +450,7 @@ GF_FilterRegister ReframeJP2Register = {
 	.process = jp2_process,
 	.process_event = jp2_process_event};
 
-const GF_FilterRegister *dynCall_jp2_reframe_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_jp2_reframe_register(GF_FilterSession *session)
 {
 	return &ReframeJP2Register;
 }

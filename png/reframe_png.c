@@ -261,7 +261,7 @@ GF_FilterRegister ReframePngRegister = {
 	.process = png_process,
 	.process_event = png_process_event};
 
-const GF_FilterRegister *dynCall_png_reframe_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_png_reframe_register(GF_FilterSession *session)
 {
 	return &ReframePngRegister;
 }

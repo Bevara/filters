@@ -413,7 +413,7 @@ GF_FilterRegister QDBMPRegister = {
 	.process = QDBMP_process,
 };
 
-const GF_FilterRegister *dynCall_QDBMP_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_QDBMP_register(GF_FilterSession *session)
 {
 	return &QDBMPRegister;
 }

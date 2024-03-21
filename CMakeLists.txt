@@ -25,8 +25,8 @@ endif()
 
 SET(LIBPNG_SRC
         ${GPAC_LOCATION}/src/media_tools/img.c
-        ${GPAC_LOCATION}/src/filters/enc_png.c
         ${CMAKE_SOURCE_DIR}/png/dec_png.c
+        ${CMAKE_SOURCE_DIR}/png/enc_png.c
         ${CMAKE_SOURCE_DIR}/png/reframe_png.c
         ${CMAKE_SOURCE_DIR}/common/convert.c
 )
@@ -38,7 +38,7 @@ SET(LIBPNG_LIBS
 add_filter(libpng
         "${LIBPNG_SRC}"
         "${LIBPNG_LIBS}"
-        ['_dynCall_pngenc_register','_dynCall_pngdec_register','_dynCall_png_reframe_register']
+        []
         GPAC_HAS_PNG
         "${PNG_INC}"
         "-s USE_ZLIB=1"
@@ -70,7 +70,7 @@ SET(JPEG_SRC
 add_filter(libjpeg
         "${JPEG_SRC}"
         "${JPEG_LIB}"
-        ['_dynCall_jpgenc_register','_dynCall_jpegdec_register','_dynCall_jpegdec_reframe_register']
+        []
         GPAC_HAS_JPEG
         "${JPEG_INC}"
         ""
@@ -101,7 +101,7 @@ SET(LIBJXL_INC
 add_filter(libjxl
         "${LIBJXL_SRC}"
         "${LIBJXL_LIB}"
-        ['_dynCall_jxldec_register','_dynCall_jxl_reframe_register']
+        []
         ""
         "${LIBJXL_INC}"
         ""
@@ -120,13 +120,13 @@ SET(OPENJPEG_LIB
 
 SET(OPENJPEG_SRC
         ${CMAKE_SOURCE_DIR}/jp2/reframe_jp2.c
-        ${GPAC_LOCATION}/src/filters/dec_j2k.c
+        ${CMAKE_SOURCE_DIR}/jp2/dec_j2k.c
 )
 
 add_filter(openjpeg
         "${OPENJPEG_SRC}"
         "${OPENJPEG_LIB}"
-        ['_dynCall_jp2_reframe_register','_dynCall_j2kdec_register']
+        []
         GPAC_HAS_JP2
         "${OPENJPEG_INC}"
         ""
@@ -145,7 +145,7 @@ SET(QDBMP_INC
 add_filter(qdbmp
         "${QDBMP_SRC}"
         ""
-        ['_dynCall_QDBMP_register']
+        []
         ""
         "${QDBMP_INC}"
         ""
@@ -226,14 +226,14 @@ SET(FF_LIB_FLAC
         ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libavfilter/libavfilter.a
 )
 
-add_filter(ffmpeg-flac
-        "${FF_SRC_FLAC}"
-        "${FF_LIB_FLAC}"
-        ['_dynCall_ffdec_flac_register','_dynCall_flac_dmx_register']
-        GPAC_HAS_FFMPEG
-        "${FF_INCLUDE_FLAC}"
-        ""
-        "1")
+# add_filter(ffmpeg-flac
+#         "${FF_SRC_FLAC}"
+#         "${FF_LIB_FLAC}"
+#         ['_dynCall_ffdec_flac_register','_dynCall_flac_dmx_register']
+#         GPAC_HAS_FFMPEG
+#         "${FF_INCLUDE_FLAC}"
+#         ""
+#         "1")
 
 SET(FF_INCLUDE_MPEG1
         ${THIRD_PARTIES}/ffmpeg
@@ -245,9 +245,9 @@ SET(FF_INCLUDE_MPEG1
 
 SET(FF_SRC_MPEG1
         ${CMAKE_SOURCE_DIR}/ffmpeg-mpeg1/ff_dec-mpeg1.c
-        ${GPAC_LOCATION}/src/filters/ff_common.c
-        ${GPAC_LOCATION}/src/filters/reframe_mpgvid.c
-        ${GPAC_LOCATION}/src/filters/dmx_mpegps.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg/ff_common.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg-mpeg1/reframe_mpgvid.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg-mpeg1/dmx_mpegps.c
         ${GPAC_LOCATION}/src/media_tools/av_parsers.c
         ${GPAC_LOCATION}/src/media_tools/media_import.c
         ${GPAC_LOCATION}/src/media_tools/mpeg2_ps.c
@@ -261,17 +261,17 @@ SET(FF_LIB_MPEG1
         ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1/libswscale/libswscale.a
 )
 
-add_filter(ffmpeg-mpeg1
-        "${FF_SRC_MPEG1}"
-        "${FF_LIB_MPEG1}"
-        ['_dynCall_ffdec_mpeg1_register','_dynCall_mpgviddmx_register','_dynCall_m2psdmx_register']
-        GPAC_HAS_FFMPEG
-        "${FF_INCLUDE_MPEG1}"
-        ""
-        "1")
+# add_filter(ffmpeg-mpeg1
+#         "${FF_SRC_MPEG1}"
+#         "${FF_LIB_MPEG1}"
+#         []
+#         GPAC_HAS_FFMPEG
+#         "${FF_INCLUDE_MPEG1}"
+#         ""
+#         "1")
 
 SET(RFPCM_SRC
-        ${GPAC_LOCATION}/src/filters/reframe_rawpcm.c
+        ${CMAKE_SOURCE_DIR}/pcm/reframe_rawpcm.c
         ${GPAC_LOCATION}/src/utils/bitstream.c
         ${GPAC_LOCATION}/src/utils/constants.c
 )
@@ -285,15 +285,15 @@ SET(RFPCM_INC
 add_filter(rfpcm
         "${RFPCM_SRC}"
         ""
-        _dynCall_pcmreframe_register
+        []
         ""
         "${RFPCM_INC}"
         ""
         "1")
 
 SET(LIBA52_SRC
-        ${GPAC_LOCATION}/src/filters/dec_ac52.c
-        ${GPAC_LOCATION}/src/filters/reframe_ac3.c
+        ${CMAKE_SOURCE_DIR}/a52/dec_ac52.c
+        ${CMAKE_SOURCE_DIR}/a52/reframe_ac3.c
         ${GPAC_LOCATION}/src/media_tools/av_parsers.c
         ${GPAC_LOCATION}/src/utils/bitstream.c
         ${GPAC_LOCATION}/src/odf/descriptors.c
@@ -312,7 +312,7 @@ SET(LIBA52_LIB
 add_filter(liba52
         "${LIBA52_SRC}"
         "${LIBA52_LIB}"
-        ['_dynCall_rfac3_register','_dynCall_a52dec_register']
+        []
         GPAC_HAS_LIBA52
         "${LIBA52_INCLUDE}"
         ""
@@ -320,8 +320,8 @@ add_filter(liba52
 
 
 SET(VORBIS_SRC
-        ${GPAC_LOCATION}/src/filters/dmx_ogg.c
-        ${GPAC_LOCATION}/src/filters/dec_vorbis.c
+        ${CMAKE_SOURCE_DIR}/vorbis/dmx_ogg.c
+        ${CMAKE_SOURCE_DIR}/vorbis/dec_vorbis.c
         ${GPAC_LOCATION}/src/media_tools/gpac_ogg.c
         ${GPAC_LOCATION}/src/media_tools/av_parsers.c
 )
@@ -346,7 +346,7 @@ SET(VORBIS_FLAG
 add_filter(vorbis
         "${VORBIS_SRC}"
         "${VORBIS_LIB}"
-        ['_dynCall_vorbisdec_register','_dynCall_oggdmx_register']
+        []
         "${VORBIS_FLAG}"
         "${VORBIS_INCLUDE}"
         ""
