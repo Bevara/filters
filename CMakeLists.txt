@@ -61,9 +61,9 @@ SET(JPEG_LIB
 
 SET(JPEG_SRC
         ${GPAC_LOCATION}/src/media_tools/img.c
-        ${GPAC_LOCATION}/src/filters/enc_jpg.c
         ${CMAKE_SOURCE_DIR}/jpeg/dec_jpeg.c
         ${CMAKE_SOURCE_DIR}/jpeg/reframe_jpeg.c
+        ${CMAKE_SOURCE_DIR}/jpeg/enc_jpg.c
         ${CMAKE_SOURCE_DIR}/common/convert.c
 )
 
