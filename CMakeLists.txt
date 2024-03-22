@@ -214,8 +214,8 @@ SET(FF_INCLUDE_FLAC
 
 SET(FF_SRC_FLAC
         ${CMAKE_SOURCE_DIR}/ffmpeg-flac/ff_dec-flac.c
-        ${GPAC_LOCATION}/src/filters/ff_common.c
-        ${GPAC_LOCATION}/src/filters/reframe_flac.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg-flac/reframe_flac.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg/ff_common.c
         ${GPAC_LOCATION}/src/utils/bitstream.c
 )
 
@@ -226,14 +226,14 @@ SET(FF_LIB_FLAC
         ${THIRD_PARTIES_BINARIES}/ffmpeg-flac/libavfilter/libavfilter.a
 )
 
-# add_filter(ffmpeg-flac
-#         "${FF_SRC_FLAC}"
-#         "${FF_LIB_FLAC}"
-#         ['_dynCall_ffdec_flac_register','_dynCall_flac_dmx_register']
-#         GPAC_HAS_FFMPEG
-#         "${FF_INCLUDE_FLAC}"
-#         ""
-#         "1")
+add_filter(ffmpeg-flac
+        "${FF_SRC_FLAC}"
+        "${FF_LIB_FLAC}"
+        []
+        GPAC_HAS_FFMPEG
+        "${FF_INCLUDE_FLAC}"
+        ""
+        "1")
 
 SET(FF_INCLUDE_MPEG1
         ${THIRD_PARTIES}/ffmpeg
@@ -261,14 +261,14 @@ SET(FF_LIB_MPEG1
         ${THIRD_PARTIES_BINARIES}/ffmpeg-mpeg1/libswscale/libswscale.a
 )
 
-# add_filter(ffmpeg-mpeg1
-#         "${FF_SRC_MPEG1}"
-#         "${FF_LIB_MPEG1}"
-#         []
-#         GPAC_HAS_FFMPEG
-#         "${FF_INCLUDE_MPEG1}"
-#         ""
-#         "1")
+add_filter(ffmpeg-mpeg1
+        "${FF_SRC_MPEG1}"
+        "${FF_LIB_MPEG1}"
+        []
+        GPAC_HAS_FFMPEG
+        "${FF_INCLUDE_MPEG1}"
+        ""
+        "1")
 
 SET(RFPCM_SRC
         ${CMAKE_SOURCE_DIR}/pcm/reframe_rawpcm.c
