@@ -6,7 +6,7 @@
     "support": [
         "audio"
     ],
-    "sources":"https://bevara.ddns.net/sources/vorbis.accessor",
+    "sources":"https://codeload.github.com/Bevara/vorbis/zip/refs/heads/main",
     "filter_source":{
         "oggdmx" : "dmx_ogg.c",
         "vorbisdec" : "dec_vorbis.c"

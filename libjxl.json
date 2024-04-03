@@ -6,7 +6,7 @@
     "support": [
         "image"
     ],
-    "sources":"https://bevara.ddns.net/sources/libjxl.accessor",
+    "sources":"https://codeload.github.com/Bevara/libjxl/zip/refs/heads/main",
     "filter_source":{
         "jxldec" : "dec_jxl.c",
         "rfjxl" : "reframe_jxl.c"

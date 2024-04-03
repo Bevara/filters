@@ -6,7 +6,7 @@
     "support": [
         "video"
     ],
-    "sources":"https://bevara.ddns.net/sources/ffmpeg-mpeg1.accessor",
+    "sources":"https://codeload.github.com/Bevara/ffmpeg-mpeg1/zip/refs/heads/main",
     "filter_source":{
         "ffdec" : "ff_dec-mpeg1.c",
         "rfmpgvid" : "reframe_mpegvid.c",

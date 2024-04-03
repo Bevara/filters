@@ -6,7 +6,7 @@
     "support": [
         "image"
     ],
-    "sources":"https://bevara.ddns.net/sources/libpng.accessor",
+    "sources":"https://codeload.github.com/Bevara/libjpeg/zip/refs/heads/main",
     "filter_source":{
         "rfpng" : "reframe_png.c",
         "pngdec" : "dec_png.c",

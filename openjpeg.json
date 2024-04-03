@@ -6,7 +6,7 @@
     "support": [
         "image"
     ],
-    "sources":"https://bevara.ddns.net/sources/openjpeg.accessor",
+    "sources":"https://codeload.github.com/Bevara/openjpeg/zip/refs/heads/main",
     "filter_source":{
         "rfjp2" : "reframe_jp2.c",
         "j2kdec" : "dec_j2k.c"
