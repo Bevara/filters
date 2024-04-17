@@ -11,5 +11,6 @@
         "rfjpeg" : "reframe_jpeg.c",
         "jpegdec" : "dec_jpeg.c",
         "encjpg" : "enc_jpg.c"
-    }
+    },
+    "licence_required":false
 }

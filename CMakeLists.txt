@@ -270,6 +270,37 @@ add_filter(ffmpeg-mpeg1
         ""
         "1")
 
+SET(FF_SRC_HEVC
+        ${CMAKE_SOURCE_DIR}/ffmpeg-hevc/ff_dec-hevc.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg-hevc/ff_rescale-hevc.c
+        ${CMAKE_SOURCE_DIR}/ffmpeg/ff_common.c
+)
+
+SET(FF_LIB_HEVC
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-hevc/libavcodec/libavcodec.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-hevc/libavutil/libavutil.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-hevc/libavformat/libavformat.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-hevc/libavfilter/libavfilter.a
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-hevc/libswscale/libswscale.a
+)
+
+SET(FF_INCLUDE_HEVC
+        ${THIRD_PARTIES}/ffmpeg
+        ${THIRD_PARTIES_BINARIES}/ffmpeg-hevc
+        ${GPAC_LOCATION}/src/filters
+        ${GPAC_LOCATION}/include
+        ${GPAC_BINARIES}
+)
+
+add_filter(ffmpeg-hevc
+        "${FF_SRC_HEVC}"
+        "${FF_LIB_HEVC}"
+        []
+        GPAC_HAS_FFMPEG
+        "${FF_INCLUDE_HEVC}"
+        ""
+        "1")
+
 SET(RFPCM_SRC
         ${CMAKE_SOURCE_DIR}/pcm/reframe_rawpcm.c
         ${GPAC_LOCATION}/src/utils/bitstream.c

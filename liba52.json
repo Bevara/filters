@@ -10,5 +10,6 @@
     "filter_source":{
         "rfac3" : "reframe_ac3.c",
         "a52dec" : "dec_ac52.c"
-    }
+    },
+    "licence_required":false
 }

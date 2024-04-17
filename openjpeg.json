@@ -10,5 +10,6 @@
     "filter_source":{
         "rfjp2" : "reframe_jp2.c",
         "j2kdec" : "dec_j2k.c"
-    }
+    },
+    "licence_required":false
 }

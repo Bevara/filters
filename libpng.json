@@ -11,5 +11,6 @@
         "rfpng" : "reframe_png.c",
         "pngdec" : "dec_png.c",
         "encpng" : "enc_png.c"
-    }
+    },
+    "licence_required":false
 }

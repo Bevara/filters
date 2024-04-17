@@ -23,5 +23,6 @@
         "rfmpgvid" : "reframe_mpgvid.c",
         "m2tsmx" : "mux_ts.c",
         "m2psdmx" : "dmx_mpegps.c"
-    }
+    },
+    "licence_required":true
 }

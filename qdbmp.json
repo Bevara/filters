@@ -9,5 +9,6 @@
     "sources":"https://codeload.github.com/Bevara/qdbmp/zip/refs/heads/main",
     "filter_source":{
         "QDBMP" : "qdbmp.c"
-    }
+    },
+    "licence_required":false
 }

@@ -10,5 +10,6 @@
     "filter_source":{
         "oggdmx" : "dmx_ogg.c",
         "vorbisdec" : "dec_vorbis.c"
-    }
+    },
+    "licence_required":false
 }
