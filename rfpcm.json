@@ -9,5 +9,6 @@
     "sources":"https://codeload.github.com/Bevara/rfpcm/zip/refs/heads/main",
     "filter_source":{
         "rfpcm" : "reframe_rawpcm.c"
-    }
+    },
+    "licence_required":false
 }

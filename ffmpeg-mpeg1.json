@@ -11,5 +11,6 @@
         "ffdec" : "ff_dec-mpeg1.c",
         "rfmpgvid" : "reframe_mpegvid.c",
         "m2psdmx" : "dmx_mpegps.c"
-    }
+    },
+    "licence_required":false
 }

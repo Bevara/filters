@@ -12,5 +12,6 @@
     "filter_source":{
         "mp4dmx" : "isoffin_read.c",
         "mp4mx" : "mux_isom.c"
-    }
+    },
+    "licence_required":false
 }
