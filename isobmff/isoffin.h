@@ -27,8 +27,9 @@
 #ifndef _ISMO_IN_H_
 #define _ISMO_IN_H_
 
+#include "isomedia.h"
+
 #include <gpac/constants.h>
-#include <gpac/isomedia.h>
 #include <gpac/filters.h>
 #include <gpac/thread.h>
 
@@ -112,7 +113,7 @@ typedef struct
 	Bool no_order_check;
 	u32 moov_not_loaded;
     Bool invalid_segment;
-    
+
 	u64 last_sender_ntp, ntp_at_last_sender_ntp, cts_for_last_sender_ntp;
 	Bool is_partial_download, wait_for_source;
 
@@ -151,7 +152,7 @@ typedef struct
 	GF_ISOSampleRollType sap_4_type;
 	s32 roll;
 	u32 xps_mask;
-	
+
 	u32 sample_num, sample_last;
 	s64 ts_offset;
 
@@ -197,7 +198,7 @@ typedef struct
 
 	u32 key_info_crc;
 	const GF_PropertyValue *cenc_ki;
-	
+
 	u8 *sai_buffer;
 	u32 sai_alloc_size, sai_buffer_size;
 

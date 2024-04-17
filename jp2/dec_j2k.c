@@ -156,8 +156,8 @@ static GF_Err j2kdec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is
 		if (p) ctx->width = p->value.uint;
 		p = gf_filter_pid_get_property(pid, GF_PROP_PID_HEIGHT);
 		if (p) ctx->height = p->value.uint;
-		ctx->nb_comp = 0;
-		ctx->pixel_format = 0;
+		ctx->nb_comp = 3;
+		ctx->pixel_format = GF_PIXEL_RGB;
 	}
 
 	ctx->ipid = pid;

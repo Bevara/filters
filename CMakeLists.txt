@@ -356,6 +356,7 @@ SET(ISOBMFF_SRC
         ${CMAKE_SOURCE_DIR}/isobmff/isoffin_read.c
         ${CMAKE_SOURCE_DIR}/isobmff/isoffin_load.c
         ${CMAKE_SOURCE_DIR}/isobmff/isoffin_read_ch.c
+        ${CMAKE_SOURCE_DIR}/isobmff/isom_tools.c
         ${CMAKE_SOURCE_DIR}/isobmff/mux_isom.c
         ${GPAC_LOCATION}/src/isomedia/isom_read.c
         ${GPAC_LOCATION}/src/isomedia/isom_store.c
