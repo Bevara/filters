@@ -9,12 +9,12 @@ SET(PNG_INC
         ${THIRD_PARTIES}/libpng-code
         ${THIRD_PARTIES_BINARIES}/libpng
         ${GPAC_LOCATION}/include
-        ${GPAC_BINARIES}        
+        ${GPAC_BINARIES}
 )
 
 if(DEBUG_MODE)
         SET(PNG_LIB
-                ${THIRD_PARTIES_BINARIES}/libpng/libpng16d.a
+                ${THIRD_PARTIES_BINARIES}/libpng/libpng16.a
         )
 else()
         SET(PNG_LIB
@@ -351,6 +351,48 @@ add_filter(vorbis
         "${VORBIS_INCLUDE}"
         ""
         "1")
+
+SET(ISOBMFF_SRC
+        ${CMAKE_SOURCE_DIR}/isobmff/isoffin_read.c
+        ${CMAKE_SOURCE_DIR}/isobmff/isoffin_load.c
+        ${CMAKE_SOURCE_DIR}/isobmff/isoffin_read_ch.c
+        ${CMAKE_SOURCE_DIR}/isobmff/mux_isom.c
+        ${GPAC_LOCATION}/src/isomedia/isom_read.c
+        ${GPAC_LOCATION}/src/isomedia/isom_store.c
+        ${GPAC_LOCATION}/src/isomedia/box_funcs.c
+        ${GPAC_LOCATION}/src/isomedia/box_code_base.c
+        ${GPAC_LOCATION}/src/isomedia/box_dump.c
+        ${GPAC_LOCATION}/src/isomedia/box_code_meta.c
+        ${GPAC_LOCATION}/src/isomedia/avc_ext.c
+        ${GPAC_LOCATION}/src/isomedia/box_code_drm.c
+        ${GPAC_LOCATION}/src/isomedia/box_code_3gpp.c
+        ${GPAC_LOCATION}/src/isomedia/box_code_apple.c
+        ${GPAC_LOCATION}/src/isomedia/box_code_adobe.c
+        ${GPAC_LOCATION}/src/isomedia/isom_intern.c
+        ${GPAC_LOCATION}/src/isomedia/data_map.c
+        ${GPAC_LOCATION}/src/isomedia/iff.c
+        ${GPAC_LOCATION}/src/isomedia/meta.c
+        ${GPAC_LOCATION}/src/isomedia/sample_descs.c
+        ${GPAC_LOCATION}/src/isomedia/track.c
+        ${GPAC_LOCATION}/src/isomedia/media.c
+        ${GPAC_LOCATION}/src/isomedia/stbl_read.c
+        ${GPAC_LOCATION}/src/media_tools/webvtt.c
+)
+
+SET(ISOBMFF_INCLUDE
+        ${GPAC_BINARIES}
+        ${GPAC_LOCATION}/include
+)
+
+add_filter(isobmff
+        "${ISOBMFF_SRC}"
+        ""
+        []
+        ""
+        "${ISOBMFF_INCLUDE}"
+        ""
+        "1")
+
 
 # Should always be at the end of this file
 set(WASM_FILES ${WASM_FILES} PARENT_SCOPE)

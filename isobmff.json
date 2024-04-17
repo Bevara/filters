@@ -1,0 +1,16 @@
+{
+    "name": "isobmff",
+    "description": "ISOBMF demultiplexer/multiplexer",
+    "filters":["mp4dmx","mp4mx"],
+    "help": "This filter multiplexes and demultiplexes ISOBMF (14496-12 and derived specifications).",
+    "support": [
+        "image",
+        "audio",
+        "video"
+    ],
+    "sources":"https://codeload.github.com/Bevara/isobmff/zip/refs/heads/main",
+    "filter_source":{
+        "mp4dmx" : "isoffin_read.c",
+        "mp4mx" : "mux_isom.c"
+    }
+}
