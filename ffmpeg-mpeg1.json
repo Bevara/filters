@@ -7,6 +7,7 @@
         "video"
     ],
     "sources":"https://codeload.github.com/Bevara/ffmpeg-mpeg1/zip/refs/heads/main",
+    "binaries" : "https://github.com/Bevara/ffmpeg-mpeg1/releases/download/1/ffmpeg-mpeg1_1.wasm",
     "filter_source":{
         "ffdec" : "ff_dec-mpeg1.c",
         "rfmpgvid" : "reframe_mpegvid.c",

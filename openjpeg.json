@@ -7,6 +7,7 @@
         "image"
     ],
     "sources":"https://codeload.github.com/Bevara/openjpeg/zip/refs/heads/main",
+    "binaries" : "https://github.com/Bevara/openjpeg/releases/download/1/openjpeg_1.wasm",
     "filter_source":{
         "rfjp2" : "reframe_jp2.c",
         "j2kdec" : "dec_j2k.c"

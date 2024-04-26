@@ -7,6 +7,7 @@
         "image"
     ],
     "sources":"https://codeload.github.com/Bevara/qdbmp/zip/refs/heads/main",
+    "binaries" : "https://github.com/Bevara/qdbmp/releases/download/1/qdbmp_1.wasm",
     "filter_source":{
         "QDBMP" : "qdbmp.c"
     },

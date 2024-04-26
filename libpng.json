@@ -7,6 +7,7 @@
         "image"
     ],
     "sources":"https://codeload.github.com/Bevara/libpng/zip/refs/heads/main",
+    "binaries" : "https://github.com/Bevara/libpng/releases/download/1/libpng_1.wasm",
     "filter_source":{
         "rfpng" : "reframe_png.c",
         "pngdec" : "dec_png.c",

@@ -7,6 +7,7 @@
         "audio"
     ],
     "sources":"https://codeload.github.com/Bevara/ffmpeg-flac/zip/refs/heads/main",
+    "binaries" : "https://github.com/Bevara/ffmpeg-flac/releases/download/1/ffmpeg-flac_1.wasm",
     "filter_source":{
         "rfflac" : "reframe_flac.c",
         "ffdec-flac" : "ff_dec-flac.c"

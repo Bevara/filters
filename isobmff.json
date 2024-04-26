@@ -9,6 +9,7 @@
         "video"
     ],
     "sources":"https://codeload.github.com/Bevara/isobmff/zip/refs/heads/main",
+    "binaries" : "https://github.com/Bevara/isobmff/releases/download/1/isobmff_1.wasm",
     "filter_source":{
         "mp4dmx" : "isoffin_read.c",
         "mp4mx" : "mux_isom.c"

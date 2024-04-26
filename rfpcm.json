@@ -7,6 +7,7 @@
         "audio"
     ],
     "sources":"https://codeload.github.com/Bevara/rfpcm/zip/refs/heads/main",
+    "binaries" : "https://github.com/Bevara/rfpcm/releases/download/1/rfpcm_1.wasm",
     "filter_source":{
         "rfpcm" : "reframe_rawpcm.c"
     },
