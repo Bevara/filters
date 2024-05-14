@@ -5,20 +5,29 @@ include(filters.cmake)
 
 add_definitions(-fpic)
 
-add_subdirectory(libpng)
-add_subdirectory(libjpeg)
-add_subdirectory(libjxl)
-add_subdirectory(openjpeg)
-add_subdirectory(qdbmp)
-add_subdirectory(ffmpeg-flac)
-add_subdirectory(ffmpeg-mpeg1)
-add_subdirectory(ffmpeg-hevc)
-add_subdirectory(rfpcm)
-add_subdirectory(liba52)
-add_subdirectory(vorbis)
-add_subdirectory(isobmff)
+set(filters
+  libpng
+  libjpeg
+  libjxl
+  openjpeg
+  qdbmp
+  ffmpeg-flac
+  ffmpeg-mpeg1
+  ffmpeg-hevc
+  rfpcm
+  liba52
+  vorbis
+  isobmff
+)
 
+foreach(filter ${filters})
+    add_subdirectory(${filter})
+    file(GLOB WASM_FILTERS
+      "${CMAKE_BINARY_DIR}/filters/${filter}/*.wasm"
+    )
 
+  file(COPY ${WASM_FILTERS} DESTINATION ${CMAKE_BINARY_DIR})
+endforeach()
 
 
 SET(FF_SRC

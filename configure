@@ -30,17 +30,3 @@ if test "$debuginfo" = "no"; then
 else
     $source_path/third_parties/build_thirdparties.sh --enable-debug
 fi
-
-echo "Configuring emsdk"
-source $source_path/third_parties/emsdk_vers.txt
-$source_path/third_parties/emsdk/emsdk install $EMSDK_VERS
-$source_path/third_parties/emsdk/emsdk activate $EMSDK_VERS
-. $source_path/third_parties/emsdk/emsdk_env.sh
-
-echo "Configuring filters"
-cd $BUILD_DIR
-if test "$debuginfo" = "no"; then
-    emcmake cmake $source_path -DDEBUG_MODE=OFF
-else
-    emcmake cmake $source_path -DDEBUG_MODE=ON
-fi
