@@ -1,9 +1,0 @@
-[
-    {
-        "name":"nanojpeg",
-        "files":["{CMAKE_SOURCE_DIR}/src/filters/nanojpeg.c",
-        "${THIRD_PARTIES}/nanojpeg/trunk/nanojpeg/nanojpeg.c"],
-        "entry":["_dynCall_nanojpeg_register"],
-        "version":"1"
-    }
-]
