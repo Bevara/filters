@@ -30,3 +30,6 @@ if test "$debuginfo" = "no"; then
 else
     $source_path/third_parties/build_thirdparties.sh --enable-debug
 fi
+
+echo "Updating all dependencies"
+$source_path/update_libs.sh
