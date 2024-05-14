@@ -1,0 +1,14 @@
+{
+    "name": "ffmpeg-flac",
+    "description": "ffmpeg flac decoder",
+    "filters":["rfflac","ffdec-flac"],
+    "help": "This is a reduced version of ffmpeg adapted to decode flac content.",
+    "support": [
+        "audio"
+    ],
+    "sources":"https://bevara.ddns.net/sources/ffmpeg-flac.accessor",
+    "filter_source":{
+        "rfflac" : "reframe_flac.c",
+        "ffdec-flac" : "ff_dec-flac.c"
+    }
+}

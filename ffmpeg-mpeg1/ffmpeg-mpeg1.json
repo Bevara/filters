@@ -1,0 +1,15 @@
+{
+    "name": "ffmpeg-mpeg1",
+    "description": "ffmpeg mpeg1 decoder",
+    "filters":["ffdec","rfmpgvid","m2psdmx"],
+    "help": "This is a reduced version of ffmpeg adapted to decode mpeg1 contents in a canvas.",
+    "support": [
+        "video"
+    ],
+    "sources":"https://bevara.ddns.net/sources/ffmpeg-mpeg1.accessor",
+    "filter_source":{
+        "ffdec" : "ff_dec-mpeg1.c",
+        "rfmpgvid" : "reframe_mpegvid.c",
+        "m2psdmx" : "dmx_mpegps.c"
+    }
+}

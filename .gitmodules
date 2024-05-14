@@ -1,3 +1,39 @@
 [submodule "third_parties"]
 	path = third_parties
 	url = https://github.com/Bevara/third_parties.git
+[submodule "isobmff"]
+	path = isobmff
+	url = https://github.com/Bevara/isobmff.git
+[submodule "ffmpeg-hevc"]
+	path = ffmpeg-hevc
+	url = https://github.com/Bevara/ffmpeg-hevc.git
+[submodule "libjxl"]
+	path = libjxl
+	url = https://github.com/Bevara/libjxl.git
+[submodule "liba52"]
+	path = liba52
+	url = https://github.com/Bevara/liba52.git
+[submodule "vorbis"]
+	path = vorbis
+	url = https://github.com/Bevara/vorbis.git
+[submodule "rfpcm"]
+	path = rfpcm
+	url = https://github.com/Bevara/rfpcm.git
+[submodule "libpng"]
+	path = libpng
+	url = https://github.com/Bevara/libpng.git
+[submodule "openjpeg"]
+	path = openjpeg
+	url = https://github.com/Bevara/openjpeg.git
+[submodule "ffmpeg-mpeg1"]
+	path = ffmpeg-mpeg1
+	url = https://github.com/Bevara/ffmpeg-mpeg1.git
+[submodule "libjpeg"]
+	path = libjpeg
+	url = https://github.com/Bevara/libjpeg.git
+[submodule "ffmpeg-flac"]
+	path = ffmpeg-flac
+	url = https://github.com/Bevara/ffmpeg-flac.git
+[submodule "qdbmp"]
+	path = qdbmp
+	url = https://github.com/Bevara/qdbmp.git

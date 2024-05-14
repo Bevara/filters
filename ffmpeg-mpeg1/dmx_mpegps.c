@@ -30,7 +30,7 @@
 #include <gpac/bitstream.h>
 
 #ifndef GPAC_DISABLE_MPEG2PS
-#include "../media_tools/mpeg2_ps.h"
+#include "mpeg2_ps.h"
 #include <gpac/media_tools.h>
 
 typedef struct
