@@ -18,6 +18,9 @@ set(filters
   liba52
   vorbis
   isobmff
+  libmad
+  libxvid
+  avidmx
 )
 
 foreach(filter ${filters})
