@@ -58,3 +58,9 @@ cp $build_path/third_parties/openjpeg/bin/libopenjp2.a $source_path/openjpeg/lib
 echo "Updating lib for filter vorbis"
 cp $build_path/third_parties/ogg/libogg.a $source_path/vorbis/lib/
 cp $build_path/third_parties/vorbis/lib/libvorbis.a $source_path/vorbis/lib/
+
+echo "Updating lib for filter libmad"
+cp $build_path/third_parties/libmad/.libs/libmad.a $source_path/libmad/lib/
+
+echo "Updating lib for filter libxvid"
+cp $build_path/third_parties/xvidcore/libxvidcore.a $source_path/libxvid/lib/
