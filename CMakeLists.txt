@@ -21,6 +21,7 @@ set(filters
   libmad
   libxvid
   avidmx
+  theora
 )
 
 foreach(filter ${filters})

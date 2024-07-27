@@ -46,3 +46,6 @@
 [submodule "libmad"]
 	path = libmad
 	url = https://github.com/Bevara/libmad.git
+[submodule "theora"]
+	path = theora
+	url = https://github.com/Bevara/theora.git

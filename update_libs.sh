@@ -64,3 +64,6 @@ cp $build_path/third_parties/libmad/.libs/libmad.a $source_path/libmad/lib/
 
 echo "Updating lib for filter libxvid"
 cp $build_path/third_parties/xvidcore/libxvidcore.a $source_path/libxvid/lib/
+
+echo "Updating lib for filter theora"
+cp $build_path/third_parties/theora/lib/.libs/libtheora.a $source_path/theora/lib/
