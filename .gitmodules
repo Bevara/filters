@@ -40,9 +40,6 @@
 [submodule "libxvid"]
 	path = libxvid
 	url = https://github.com/Bevara/libxvid.git
-[submodule "avidmx"]
-	path = avidmx
-	url = https://github.com/Bevara/avidmx.git
 [submodule "libmad"]
 	path = libmad
 	url = https://github.com/Bevara/libmad.git
