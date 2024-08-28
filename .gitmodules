@@ -37,12 +37,6 @@
 [submodule "qdbmp"]
 	path = qdbmp
 	url = https://github.com/Bevara/qdbmp.git
-[submodule "libxvid"]
-	path = libxvid
-	url = https://github.com/Bevara/libxvid.git
-[submodule "libmad"]
-	path = libmad
-	url = https://github.com/Bevara/libmad.git
 [submodule "theora"]
 	path = theora
 	url = https://github.com/Bevara/theora.git
