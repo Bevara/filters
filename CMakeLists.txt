@@ -19,6 +19,7 @@ set(filters
   vorbis
   isobmff
   theora
+  ogg
 )
 
 foreach(filter ${filters})
