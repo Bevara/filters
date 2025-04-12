@@ -43,3 +43,6 @@
 [submodule "libmad"]
 	path = libmad
 	url = https://github.com/Bevara/libmad
+[submodule "libfaad"]
+	path = libfaad
+	url = https://github.com/Bevara/libfaad.git
