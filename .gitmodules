@@ -46,3 +46,6 @@
 [submodule "libfaad"]
 	path = libfaad
 	url = https://github.com/Bevara/libfaad.git
+[submodule "ogg"]
+	path = ogg
+	url = https://github.com/Bevara/ogg.git
