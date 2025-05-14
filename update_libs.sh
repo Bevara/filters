@@ -33,6 +33,13 @@ cp $build_path/third_parties/ffmpeg-mpeg1/libavfilter/libavfilter.a $source_path
 cp $build_path/third_parties/ffmpeg-mpeg1/libavformat/libavformat.a $source_path/ffmpeg-mpeg1/lib/
 cp $build_path/third_parties/ffmpeg-mpeg1/libavutil/libavutil.a $source_path/ffmpeg-mpeg1/lib/
 
+echo "Updating libs for filter ffmpeg-x264"
+cp $build_path/third_parties/ffmpeg-x264/libavcodec/libavcodec.a $source_path/ffmpeg-x264/lib/
+cp $build_path/third_parties/ffmpeg-x264/libavfilter/libavfilter.a $source_path/ffmpeg-x264/lib/
+cp $build_path/third_parties/ffmpeg-x264/libavformat/libavformat.a $source_path/ffmpeg-x264/lib/
+cp $build_path/third_parties/ffmpeg-x264/libavutil/libavutil.a $source_path/ffmpeg-x264/lib/
+
+
 echo "Updating lib for filter liba52"
 cp $build_path/third_parties/liba52/liba52/.libs/liba52.a $source_path/liba52/lib/
 
