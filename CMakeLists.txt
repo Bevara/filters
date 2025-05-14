@@ -14,6 +14,7 @@ set(filters
   ffmpeg-flac
   ffmpeg-mpeg1
   ffmpeg-hevc
+  ffmpeg-x264
   rfpcm
   liba52
   vorbis
