@@ -49,3 +49,6 @@
 [submodule "ogg"]
 	path = ogg
 	url = https://github.com/Bevara/ogg.git
+[submodule "ffmpeg-x264"]
+	path = ffmpeg-x264
+	url = https://github.com/Bevara/ffmpeg-x264.git
