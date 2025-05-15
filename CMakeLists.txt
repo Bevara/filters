@@ -17,6 +17,7 @@ set(filters
   ffmpeg-x264
   rfpcm
   liba52
+  libmad
   vorbis
   isobmff
   theora
