@@ -22,6 +22,7 @@ set(filters
   isobmff
   theora
   ogg
+  bifsdec
 )
 
 foreach(filter ${filters})

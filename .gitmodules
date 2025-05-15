@@ -52,3 +52,6 @@
 [submodule "ffmpeg-x264"]
 	path = ffmpeg-x264
 	url = https://github.com/Bevara/ffmpeg-x264.git
+[submodule "bifsdec"]
+	path = bifsdec
+	url = https://github.com/Bevara/bifsdec.git
