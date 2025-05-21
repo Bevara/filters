@@ -55,3 +55,9 @@
 [submodule "bifsdec"]
 	path = bifsdec
 	url = https://github.com/Bevara/bifsdec.git
+[submodule "libxvid"]
+	path = libxvid
+	url = https://github.com/Bevara/libxvid.git
+[submodule "avidmx"]
+	path = avidmx
+	url = https://github.com/Bevara/avidmx.git

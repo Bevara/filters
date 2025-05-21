@@ -23,6 +23,9 @@ set(filters
   theora
   ogg
   bifsdec
+  libxvid
+  avidmx
+  libfaad
 )
 
 foreach(filter ${filters})
