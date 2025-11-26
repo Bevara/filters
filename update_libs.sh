@@ -40,6 +40,25 @@ cp $build_path/third_parties/ffmpeg-x264/libavutil/libavutil.a $source_path/ffmp
 cp $build_path/third_parties/out/lib/libx264.a $source_path/ffmpeg-x264/lib/
 
 
+echo "Updating libs for filter ffdmx"
+cp $build_path/third_parties/ffmpeg-dmx/libavcodec/libavcodec.a $source_path/ffdmx/lib/
+cp $build_path/third_parties/ffmpeg-dmx/libavformat/libavformat.a $source_path/ffdmx/lib/
+cp $build_path/third_parties/ffmpeg-dmx/libavutil/libavutil.a $source_path/ffdmx/lib/
+
+
+# echo "Updating libs for filter ffmpeg-full"
+# cp $build_path/third_parties/ffmpeg-full/libavcodec/libavcodec.a $source_path/ffmpeg-full/lib/
+# cp $build_path/third_parties/ffmpeg-full/libavformat/libavformat.a $source_path/ffmpeg-full/lib/
+# cp $build_path/third_parties/ffmpeg-full/libavutil/libavutil.a $source_path/ffmpeg-full/lib/
+# cp $build_path/third_parties/ffmpeg-full/libavfilter/libavfilter.a $source_path/ffmpeg-full/lib/
+# cp $build_path/third_parties/ffmpeg-full/libavdevice/libavdevice.a $source_path/ffmpeg-full/lib/
+# cp $build_path/third_parties/ffmpeg-full/libswscale/libswscale.a $source_path/ffmpeg-full/lib/
+
+echo "Updating libs for filter isobmff"
+cp $build_path/third_parties/ffmpeg-dmx/libavcodec/libavcodec.a $source_path/isobmff/lib/
+cp $build_path/third_parties/ffmpeg-dmx/libavformat/libavformat.a $source_path/isobmff/lib/
+cp $build_path/third_parties/ffmpeg-dmx/libavutil/libavutil.a $source_path/isobmff/lib/
+
 echo "Updating lib for filter liba52"
 cp $build_path/third_parties/liba52/liba52/.libs/liba52.a $source_path/liba52/lib/
 

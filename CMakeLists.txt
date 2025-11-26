@@ -15,6 +15,8 @@ set(filters
   ffmpeg-mpeg1
   ffmpeg-hevc
   ffmpeg-x264
+  #ffmpeg-full
+  ffdmx
   rfpcm
   liba52
   libmad
@@ -25,7 +27,7 @@ set(filters
   bifsdec
   libxvid
   avidmx
-  libfaad
+  #libfaad
 )
 
 foreach(filter ${filters})

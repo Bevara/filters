@@ -61,3 +61,6 @@
 [submodule "avidmx"]
 	path = avidmx
 	url = https://github.com/Bevara/avidmx.git
+[submodule "ffdmx"]
+	path = ffdmx
+	url = https://github.com/Bevara/ffdmx
