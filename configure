@@ -23,6 +23,9 @@ for opt do
     esac
 done
 
+echo "Updating submodules"
+git submodule update --init
+
 echo "Downloading and building dependencies"
 mkdir -p third_parties
 cd third_parties
