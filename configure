@@ -24,6 +24,9 @@ for opt do
 done
 
 echo "Downloading and building dependencies"
+mkdir -p third_parties
+cd third_parties
+
 # git submodule update --init --recursive
 if test "$debuginfo" = "no"; then
     $source_path/third_parties/build_thirdparties.sh
@@ -32,4 +35,5 @@ else
 fi
 
 echo "Updating all dependencies"
+cd $BUILD_DIR
 $source_path/update_libs.sh
