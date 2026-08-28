@@ -27,7 +27,7 @@ set(filters
   bifsdec
   libxvid
   avidmx
-  #libfaad
+  libfaad
 )
 
 foreach(filter ${filters})
