@@ -67,3 +67,6 @@
 [submodule "libraw"]
 	path = libraw
 	url = https://github.com/Bevara/libraw.git
+[submodule "libheif"]
+	path = libheif
+	url = https://github.com/Bevara/libheif
