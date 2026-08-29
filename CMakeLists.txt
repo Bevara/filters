@@ -31,6 +31,12 @@ set(filters
   libxvid
   avidmx
   libfaad
+  libflac
+  libaiff
+  libopus
+  libmpg123
+  libmpeg2
+  libmidi
 )
 
 foreach(filter ${filters})

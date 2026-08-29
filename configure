@@ -3,6 +3,7 @@ echo "Setting environnement"
 BUILD_DIR=$PWD
 debuginfo="no"
 no_gcc_opt="no"
+release_mode="no"
 
 # Find source path
 source_path="`echo $0 | sed -e 's#/configure##'`"
@@ -20,8 +21,18 @@ for opt do
     case "$opt" in
         --enable-debug) debuginfo="yes"; no_gcc_opt="yes"
             ;;
+        --enable-release) release_mode="yes"
+            ;;
     esac
 done
+
+if test "$release_mode" = "yes" -a -z "$EMCC_CFLAGS"; then
+    # Only used when this script is invoked directly (not via the top-level
+    # ./configure --enable-release, which already exports this); it makes
+    # every emcc/em++ call - including the third-party libraries built
+    # below - favor the smallest possible wasm output.
+    export EMCC_CFLAGS="-Oz -DNDEBUG -sASSERTIONS=0"
+fi
 
 echo "Updating submodules"
 #git submodule update --init
@@ -32,7 +43,11 @@ cd third_parties
 
 # #git submodule update --init --recursive
 if test "$debuginfo" = "no"; then
-    $source_path/third_parties/build_thirdparties.sh
+    if test "$release_mode" = "yes"; then
+        $source_path/third_parties/build_thirdparties.sh --enable-release
+    else
+        $source_path/third_parties/build_thirdparties.sh
+    fi
 else
     $source_path/third_parties/build_thirdparties.sh --enable-debug
 fi

@@ -73,3 +73,21 @@
 [submodule "libtiff"]
 	path = libtiff
 	url = https://github.com/Bevara/libtiff.git
+[submodule "libaif"]
+	path = libaif
+	url = https://github.com/Bevara/libaif.git
+[submodule "libflac"]
+	path = libflac
+	url = https://github.com/Bevara/libflac.git
+[submodule "libmidi"]
+	path = libmidi
+	url = https://github.com/Bevara/libmidi.git
+[submodule "libmpeg2"]
+	path = libmpeg2
+	url = https://github.com/Bevara/libmpeg2.git
+[submodule "libmpg123"]
+	path = libmpg123
+	url = https://github.com/Bevara/libmpg123.git
+[submodule "libopus"]
+	path = libopus
+	url = https://github.com/Bevara/libopus.git
