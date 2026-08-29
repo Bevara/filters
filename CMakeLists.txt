@@ -11,6 +11,7 @@ set(filters
   libjxl
   libraw
   libheif
+  libtiff
   openjpeg
   qdbmp
   ffmpeg-flac
