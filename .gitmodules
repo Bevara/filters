@@ -64,3 +64,6 @@
 [submodule "ffdmx"]
 	path = ffdmx
 	url = https://github.com/Bevara/ffdmx
+[submodule "libraw"]
+	path = libraw
+	url = https://github.com/Bevara/libraw.git

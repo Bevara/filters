@@ -9,6 +9,7 @@ set(filters
   libpng
   libjpeg
   libjxl
+  libraw
   openjpeg
   qdbmp
   ffmpeg-flac
