@@ -32,7 +32,7 @@ set(filters
   avidmx
   libfaad
   libflac
-  libaiff
+  libaif
   libopus
   libmpg123
   libmpeg2
