@@ -91,3 +91,6 @@
 [submodule "libopus"]
 	path = libopus
 	url = https://github.com/Bevara/libopus.git
+[submodule "libde265"]
+	path = libde265
+	url = https://github.com/Bevara/libde265.git

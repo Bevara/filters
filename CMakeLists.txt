@@ -37,6 +37,7 @@ set(filters
   libmpg123
   libmpeg2
   libmidi
+  libde265
 )
 
 foreach(filter ${filters})
