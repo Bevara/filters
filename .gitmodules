@@ -94,3 +94,9 @@
 [submodule "libde265"]
 	path = libde265
 	url = https://github.com/Bevara/libde265.git
+[submodule "libaom"]
+	path = libaom
+	url = https://github.com/Bevara/libaom.git
+[submodule "webmdmx"]
+	path = webmdmx
+	url = https://github.com/Bevara/webmdmx.git

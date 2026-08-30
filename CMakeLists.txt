@@ -38,6 +38,8 @@ set(filters
   libmpeg2
   libmidi
   libde265
+  libaom
+  webmdmx
 )
 
 foreach(filter ${filters})
