@@ -45,6 +45,7 @@ set(filters
   poppler
   qoi
   libbpg
+  libx264
 )
 
 foreach(filter ${filters})

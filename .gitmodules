@@ -115,3 +115,6 @@
 [submodule "qoi"]
 	path = qoi
 	url = https://github.com/Bevara/qoi.git
+[submodule "libx264"]
+	path = libx264
+	url = https://github.com/Bevara/libx264.git
