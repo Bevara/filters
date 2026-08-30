@@ -103,3 +103,6 @@
 [submodule "avif"]
 	path = avif
 	url = https://github.com/Bevara/avif.git
+[submodule "libvpx"]
+	path = libvpx
+	url = https://github.com/Bevara/libvpx.git

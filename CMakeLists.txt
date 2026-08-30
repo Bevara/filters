@@ -41,6 +41,7 @@ set(filters
   libaom
   webmdmx
   avif
+  libvpx
 )
 
 foreach(filter ${filters})
