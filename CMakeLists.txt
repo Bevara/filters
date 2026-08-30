@@ -42,8 +42,8 @@ set(filters
   webmdmx
   avif
   libvpx
-  libpoppler
-  libqoi
+  poppler
+  qoi
   libbpg
 )
 
