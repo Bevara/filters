@@ -106,3 +106,12 @@
 [submodule "libvpx"]
 	path = libvpx
 	url = https://github.com/Bevara/libvpx.git
+[submodule "libbpg"]
+	path = libbpg
+	url = https://github.com/Bevara/libbpg.git
+[submodule "poppler"]
+	path = poppler
+	url = https://github.com/Bevara/poppler.git
+[submodule "qoi"]
+	path = qoi
+	url = https://github.com/Bevara/qoi.git

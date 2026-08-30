@@ -42,6 +42,9 @@ set(filters
   webmdmx
   avif
   libvpx
+  libpoppler
+  libqoi
+  libbpg
 )
 
 foreach(filter ${filters})
