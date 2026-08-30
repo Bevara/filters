@@ -118,3 +118,6 @@
 [submodule "libx264"]
 	path = libx264
 	url = https://github.com/Bevara/libx264.git
+[submodule "libx265"]
+	path = libx265
+	url = https://github.com/Bevara/libx265.git

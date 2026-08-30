@@ -46,6 +46,7 @@ set(filters
   qoi
   libbpg
   libx264
+  libx265
 )
 
 foreach(filter ${filters})
