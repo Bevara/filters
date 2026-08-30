@@ -100,3 +100,6 @@
 [submodule "webmdmx"]
 	path = webmdmx
 	url = https://github.com/Bevara/webmdmx.git
+[submodule "avif"]
+	path = avif
+	url = https://github.com/Bevara/avif.git

@@ -40,6 +40,7 @@ set(filters
   libde265
   libaom
   webmdmx
+  avif
 )
 
 foreach(filter ${filters})
