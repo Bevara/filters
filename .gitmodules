@@ -121,3 +121,9 @@
 [submodule "libx265"]
 	path = libx265
 	url = https://github.com/Bevara/libx265.git
+[submodule "liblame"]
+	path = liblame
+	url = https://github.com/Bevara/liblame.git
+[submodule "libopusenc"]
+	path = libopusenc
+	url = https://github.com/Bevara/libopusenc.git

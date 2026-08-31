@@ -47,6 +47,8 @@ set(filters
   libbpg
   libx264
   libx265
+  libmp3lame
+  libopusenc
 )
 
 foreach(filter ${filters})
