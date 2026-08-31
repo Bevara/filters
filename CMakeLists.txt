@@ -47,7 +47,7 @@ set(filters
   libbpg
   libx264
   libx265
-  libmp3lame
+  liblame
   libopusenc
 )
 
