@@ -146,8 +146,6 @@ copy_lib $build_path/third_parties/libde265 libde265.a $source_path/libde265/lib
 
 echo "Updating lib for filter libheif"
 copy_lib $build_path/third_parties/libheif libheif.a $source_path/libheif/lib/
-# libheif also needs a libde265.a (shared build) and the C++ runtime, same
-# pattern as libjxl below
 copy_lib $build_path/third_parties/libde265 libde265.a $source_path/libheif/lib/
 cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++.a $source_path/libheif/lib/
 cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++abi.a $source_path/libheif/lib/

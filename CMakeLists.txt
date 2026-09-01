@@ -14,10 +14,10 @@ set(filters
   libtiff
   openjpeg
   qdbmp
-  ffmpeg-flac
-  ffmpeg-mpeg1
-  ffmpeg-hevc
-  ffmpeg-x264
+  #ffmpeg-flac
+  #ffmpeg-mpeg1
+  #ffmpeg-hevc
+  #ffmpeg-x264
   #ffmpeg-full
   ffdmx
   rfpcm
