@@ -14,36 +14,36 @@ else
     build_path="`pwd`"
 fi
 
-echo "Updating libs for filter ffmpeg-flac"
-cp $build_path/third_parties/ffmpeg-flac/libavcodec/libavcodec.a $source_path/ffmpeg-flac/lib/
-cp $build_path/third_parties/ffmpeg-flac/libavfilter/libavfilter.a $source_path/ffmpeg-flac/lib/
-cp $build_path/third_parties/ffmpeg-flac/libavformat/libavformat.a $source_path/ffmpeg-flac/lib/
-cp $build_path/third_parties/ffmpeg-flac/libavutil/libavutil.a $source_path/ffmpeg-flac/lib/
+# echo "Updating libs for filter ffmpeg-flac"
+# cp $build_path/third_parties/ffmpeg-flac/libavcodec/libavcodec.a $source_path/ffmpeg-flac/lib/
+# cp $build_path/third_parties/ffmpeg-flac/libavfilter/libavfilter.a $source_path/ffmpeg-flac/lib/
+# cp $build_path/third_parties/ffmpeg-flac/libavformat/libavformat.a $source_path/ffmpeg-flac/lib/
+# cp $build_path/third_parties/ffmpeg-flac/libavutil/libavutil.a $source_path/ffmpeg-flac/lib/
 
 
-echo "Updating libs for filter ffmpeg-hevc"
-cp $build_path/third_parties/ffmpeg-hevc/libavcodec/libavcodec.a $source_path/ffmpeg-hevc/lib/
-cp $build_path/third_parties/ffmpeg-hevc/libavfilter/libavfilter.a $source_path/ffmpeg-hevc/lib/
-cp $build_path/third_parties/ffmpeg-hevc/libavformat/libavformat.a $source_path/ffmpeg-hevc/lib/
-cp $build_path/third_parties/ffmpeg-hevc/libavutil/libavutil.a $source_path/ffmpeg-hevc/lib/
+# echo "Updating libs for filter ffmpeg-hevc"
+# cp $build_path/third_parties/ffmpeg-hevc/libavcodec/libavcodec.a $source_path/ffmpeg-hevc/lib/
+# cp $build_path/third_parties/ffmpeg-hevc/libavfilter/libavfilter.a $source_path/ffmpeg-hevc/lib/
+# cp $build_path/third_parties/ffmpeg-hevc/libavformat/libavformat.a $source_path/ffmpeg-hevc/lib/
+# cp $build_path/third_parties/ffmpeg-hevc/libavutil/libavutil.a $source_path/ffmpeg-hevc/lib/
 
-echo "Updating libs for filter ffmpeg-mpeg1"
-cp $build_path/third_parties/ffmpeg-mpeg1/libavcodec/libavcodec.a $source_path/ffmpeg-mpeg1/lib/
-cp $build_path/third_parties/ffmpeg-mpeg1/libavfilter/libavfilter.a $source_path/ffmpeg-mpeg1/lib/
-cp $build_path/third_parties/ffmpeg-mpeg1/libavformat/libavformat.a $source_path/ffmpeg-mpeg1/lib/
-cp $build_path/third_parties/ffmpeg-mpeg1/libavutil/libavutil.a $source_path/ffmpeg-mpeg1/lib/
+# echo "Updating libs for filter ffmpeg-mpeg1"
+# cp $build_path/third_parties/ffmpeg-mpeg1/libavcodec/libavcodec.a $source_path/ffmpeg-mpeg1/lib/
+# cp $build_path/third_parties/ffmpeg-mpeg1/libavfilter/libavfilter.a $source_path/ffmpeg-mpeg1/lib/
+# cp $build_path/third_parties/ffmpeg-mpeg1/libavformat/libavformat.a $source_path/ffmpeg-mpeg1/lib/
+# cp $build_path/third_parties/ffmpeg-mpeg1/libavutil/libavutil.a $source_path/ffmpeg-mpeg1/lib/
 
-echo "Updating libs for filter ffmpeg-x264"
-cp $build_path/third_parties/ffmpeg-x264/libavcodec/libavcodec.a $source_path/ffmpeg-x264/lib/
-cp $build_path/third_parties/ffmpeg-x264/libavformat/libavformat.a $source_path/ffmpeg-x264/lib/
-cp $build_path/third_parties/ffmpeg-x264/libavutil/libavutil.a $source_path/ffmpeg-x264/lib/
-cp $build_path/third_parties/out/lib/libx264.a $source_path/ffmpeg-x264/lib/
+# echo "Updating libs for filter ffmpeg-x264"
+# cp $build_path/third_parties/ffmpeg-x264/libavcodec/libavcodec.a $source_path/ffmpeg-x264/lib/
+# cp $build_path/third_parties/ffmpeg-x264/libavformat/libavformat.a $source_path/ffmpeg-x264/lib/
+# cp $build_path/third_parties/ffmpeg-x264/libavutil/libavutil.a $source_path/ffmpeg-x264/lib/
+# cp $build_path/third_parties/out/lib/libx264.a $source_path/ffmpeg-x264/lib/
 
 
-echo "Updating libs for filter ffdmx"
-cp $build_path/third_parties/ffmpeg-dmx/libavcodec/libavcodec.a $source_path/ffdmx/lib/
-cp $build_path/third_parties/ffmpeg-dmx/libavformat/libavformat.a $source_path/ffdmx/lib/
-cp $build_path/third_parties/ffmpeg-dmx/libavutil/libavutil.a $source_path/ffdmx/lib/
+# echo "Updating libs for filter ffdmx"
+# cp $build_path/third_parties/ffmpeg-dmx/libavcodec/libavcodec.a $source_path/ffdmx/lib/
+# cp $build_path/third_parties/ffmpeg-dmx/libavformat/libavformat.a $source_path/ffdmx/lib/
+# cp $build_path/third_parties/ffmpeg-dmx/libavutil/libavutil.a $source_path/ffdmx/lib/
 
 
 # echo "Updating libs for filter ffmpeg-full"
@@ -147,8 +147,9 @@ copy_lib $build_path/third_parties/libde265 libde265.a $source_path/libde265/lib
 echo "Updating lib for filter libheif"
 copy_lib $build_path/third_parties/libheif libheif.a $source_path/libheif/lib/
 copy_lib $build_path/third_parties/libde265 libde265.a $source_path/libheif/lib/
-cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++.a $source_path/libheif/lib/
-cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++abi.a $source_path/libheif/lib/
+# libc++/libc++abi deliberately NOT copied here any more - see the comment in
+# libheif/CMakeLists.txt: a second C++ runtime inside the side module breaks
+# libc++'s static state across the module boundary.
 
 echo "Updating lib for filter libraw"
 copy_lib $build_path/third_parties/libraw libraw.a $source_path/libraw/lib/
@@ -193,6 +194,10 @@ copy_lib $build_path/third_parties/poppler libpoppler-cpp.a $source_path/poppler
 # own CMake build appears to bundle/vendor it (FONT_CONFIGURATION=generic),
 # so this searches poppler's own build tree rather than a separate one
 copy_lib $build_path/third_parties/poppler libfreetype.a $source_path/poppler/lib/
+# poppler's DCT (embedded JPEG) support needs libjpeg, which neither solver
+# exports - see the comment in poppler/CMakeLists.txt. Taken from the shared
+# libjpeg build rather than poppler's tree, which does not vendor it.
+copy_lib $build_path/third_parties/libjpeg libjpeg.a $source_path/poppler/lib/
 
 echo "Updating lib for filter libbpg"
 copy_lib $build_path/third_parties/libbpg libbpgdec.a $source_path/libbpg/lib/
