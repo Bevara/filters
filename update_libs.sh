@@ -71,9 +71,6 @@ cp $build_path/third_parties/libjxl/lib/libjxl.a $source_path/libjxl/lib/
 cp $build_path/third_parties/brotli/.libs/libbrotlicommon.a $source_path/libjxl/lib/
 cp $build_path/third_parties/brotli/.libs/libbrotlidec.a $source_path/libjxl/lib/
 cp $build_path/third_parties/higway/libhwy.a $source_path/libjxl/lib/
-cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc.a $source_path/libjxl/lib/
-cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++.a $source_path/libjxl/lib/
-cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++abi.a $source_path/libjxl/lib/
 
 echo "Updating lib for filter libpng"
 cp $build_path/third_parties/libpng/libpng16.a $source_path/libpng/lib/
@@ -153,8 +150,6 @@ copy_lib $build_path/third_parties/libde265 libde265.a $source_path/libheif/lib/
 
 echo "Updating lib for filter libraw"
 copy_lib $build_path/third_parties/libraw libraw.a $source_path/libraw/lib/
-cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++.a $source_path/libraw/lib/
-cp $source_path/third_parties/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/pic/libc++abi.a $source_path/libraw/lib/
 
 echo "Updating lib for filter libtiff"
 copy_lib $build_path/third_parties/libtiff libtiff.a $source_path/libtiff/lib/
