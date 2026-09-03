@@ -2,7 +2,7 @@
 
 echo "Setting environnement"
 
-find source path
+# find source path
 source_path="`echo $0 | sed -e 's#/update_libs.sh##'`"
 source_path_used="yes"
 if test -z "$source_path" -o "$source_path" = "." ; then
@@ -54,6 +54,19 @@ fi
 # cp $build_path/third_parties/ffmpeg-full/libavdevice/libavdevice.a $source_path/ffmpeg-full/lib/
 # cp $build_path/third_parties/ffmpeg-full/libswscale/libswscale.a $source_path/ffmpeg-full/lib/
 
+copy_lib() {
+    local search_dir="$1"
+    local lib_name="$2"
+    local dest_dir="$3"
+    local found
+    found=$(find "$search_dir" -name "$lib_name" 2>/dev/null | head -1)
+    if [ -n "$found" ]; then
+        cp "$found" "$dest_dir"
+    else
+        echo "WARNING: $lib_name not found under $search_dir - filter using it may fail to link"
+    fi
+}
+
 echo "Updating libs for filter isobmff"
 cp $build_path/third_parties/ffmpeg-dmx/libavcodec/libavcodec.a $source_path/isobmff/lib/
 cp $build_path/third_parties/ffmpeg-dmx/libavformat/libavformat.a $source_path/isobmff/lib/
@@ -78,6 +91,9 @@ cp $build_path/third_parties/libpng/libpng16.a $source_path/libpng/lib/
 echo "Updating lib for filter openjpeg"
 cp $build_path/third_parties/openjpeg/bin/libopenjp2.a $source_path/openjpeg/lib/
 
+echo "Updating lib for filter ogg"
+copy_lib $build_path/third_parties/ogg libogg.a $source_path/ogg/lib/
+
 echo "Updating lib for filter vorbis"
 cp $build_path/third_parties/ogg/libogg.a $source_path/vorbis/lib/
 cp $build_path/third_parties/vorbis/lib/libvorbis.a $source_path/vorbis/lib/
@@ -91,6 +107,9 @@ cp $build_path/third_parties/xvidcore/libxvidcore.a $source_path/libxvid/lib/
 echo "Updating lib for filter theora"
 cp $build_path/third_parties/theora/lib/.libs/libtheora.a $source_path/theora/lib/
 
+echo "Updating lib for filter h264bsd"
+copy_lib $build_path/third_parties/h264bsd libh264bsd.a $source_path/h264bsd/lib/
+
 # Note: qdbmp, rfpcm, bifsdec, avidmx, webmdmx and avif deliberately have no
 # entry here - their CMakeLists.txt link no prebuilt static lib at all
 # (e.g. webmdmx compiles a vendored nestegg.c directly as filter source).
@@ -102,18 +121,6 @@ cp $build_path/third_parties/theora/lib/.libs/libtheora.a $source_path/theora/li
 # above, which have been running successfully). Prints a warning instead of
 # failing hard if a lib is missing, so one missing/renamed third-party build
 # doesn't abort the whole update.
-copy_lib() {
-    local search_dir="$1"
-    local lib_name="$2"
-    local dest_dir="$3"
-    local found
-    found=$(find "$search_dir" -name "$lib_name" 2>/dev/null | head -1)
-    if [ -n "$found" ]; then
-        cp "$found" "$dest_dir"
-    else
-        echo "WARNING: $lib_name not found under $search_dir - filter using it may fail to link"
-    fi
-}
 
 echo "Updating lib for filter libx264 (native encoder, not ffmpeg-x264)"
 cp $build_path/third_parties/out/lib/libx264.a $source_path/libx264/lib/
