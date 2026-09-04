@@ -127,3 +127,6 @@
 [submodule "libopusenc"]
 	path = libopusenc
 	url = https://github.com/Bevara/libopusenc.git
+[submodule "libOpenVVC"]
+	path = libOpenVVC
+	url = https://github.com/Bevara/libOpenVVC.git
