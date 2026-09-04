@@ -38,6 +38,7 @@ set(filters
   libmpeg2
   libmidi
   libde265
+  libOpenVVC
   libaom
   webmdmx
   avif
