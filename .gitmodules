@@ -130,3 +130,57 @@
 [submodule "libOpenVVC"]
 	path = libOpenVVC
 	url = https://github.com/Bevara/libOpenVVC.git
+[submodule "libwebp"]
+	path = libwebp
+	url = https://github.com/Bevara/libwebp.git
+[submodule "libgif"]
+	path = libgif
+	url = https://github.com/Bevara/libgif.git
+[submodule "libcharls"]
+	path = libcharls
+	url = https://github.com/Bevara/libcharls.git
+[submodule "libdds"]
+	path = libdds
+	url = https://github.com/Bevara/libdds.git
+[submodule "libflif"]
+	path = libflif
+	url = https://github.com/Bevara/libflif.git
+[submodule "libjbig"]
+	path = libjbig
+	url = https://github.com/Bevara/libjbig.git
+[submodule "libjbig2"]
+	path = libjbig2
+	url = https://github.com/Bevara/libjbig2.git
+[submodule "libicns"]
+	path = libicns
+	url = https://github.com/Bevara/libicns.git
+[submodule "librecoil"]
+	path = librecoil
+	url = https://github.com/Bevara/librecoil.git
+[submodule "libmng"]
+	path = libmng
+	url = https://github.com/Bevara/libmng.git
+[submodule "libxmp"]
+	path = libxmp
+	url = https://github.com/Bevara/libxmp.git
+[submodule "libwavpack"]
+	path = libwavpack
+	url = https://github.com/Bevara/libwavpack.git
+[submodule "libamr"]
+	path = libamr
+	url = https://github.com/Bevara/libamr.git
+[submodule "libmpc"]
+	path = libmpc
+	url = https://github.com/Bevara/libmpc.git
+[submodule "libdca"]
+	path = libdca
+	url = https://github.com/Bevara/libdca.git
+[submodule "libape"]
+	path = libape
+	url = https://github.com/Bevara/libape.git
+[submodule "libgme"]
+	path = libgme
+	url = https://github.com/Bevara/libgme.git
+[submodule "libdjvu"]
+	path = libdjvu
+	url = https://github.com/Bevara/libdjvu.git

@@ -45,6 +45,24 @@ set(filters
   libvpx
   poppler
   qoi
+  libwebp
+  libgif
+  librecoil
+  libdds
+  libcharls
+  libflif
+  libjbig
+  libjbig2
+  libicns
+  libxmp
+  libgme
+  libwavpack
+  libamr
+  libmpc
+  libdca
+  libape
+  libmng
+  libdjvu
   libbpg
   libx264
   libx265
