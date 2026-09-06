@@ -69,6 +69,7 @@ set(filters
   libpsd
   simpleimg
   libxcf
+  libspeex
   libbpg
   libx264
   libx265
