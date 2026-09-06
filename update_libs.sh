@@ -33,6 +33,13 @@ fi
 # cp $build_path/third_parties/ffmpeg-mpeg1/libavformat/libavformat.a $source_path/ffmpeg-mpeg1/lib/
 # cp $build_path/third_parties/ffmpeg-mpeg1/libavutil/libavutil.a $source_path/ffmpeg-mpeg1/lib/
 
+# echo "Updating libs for filter ffmpeg-h26x"
+# cp $build_path/third_parties/ffmpeg-h26x/libavcodec/libavcodec.a $source_path/ffmpeg-h26x/lib/
+# cp $build_path/third_parties/ffmpeg-h26x/libavfilter/libavfilter.a $source_path/ffmpeg-h26x/lib/
+# cp $build_path/third_parties/ffmpeg-h26x/libavformat/libavformat.a $source_path/ffmpeg-h26x/lib/
+# cp $build_path/third_parties/ffmpeg-h26x/libavutil/libavutil.a $source_path/ffmpeg-h26x/lib/
+# cp $build_path/third_parties/ffmpeg-h26x/libswscale/libswscale.a $source_path/ffmpeg-h26x/lib/
+
 # echo "Updating libs for filter ffmpeg-x264"
 # cp $build_path/third_parties/ffmpeg-x264/libavcodec/libavcodec.a $source_path/ffmpeg-x264/lib/
 # cp $build_path/third_parties/ffmpeg-x264/libavformat/libavformat.a $source_path/ffmpeg-x264/lib/
