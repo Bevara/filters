@@ -244,3 +244,9 @@
 [submodule "libilbc"]
 	path = libilbc
 	url = https://github.com/Bevara/libilbc.git
+[submodule "rgbyuv"]
+	path = rgbyuv
+	url = https://github.com/Bevara/rgbyuv.git
+[submodule "btplay"]
+	path = btplay
+	url = https://github.com/Bevara/btplay.git
