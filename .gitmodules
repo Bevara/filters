@@ -205,3 +205,42 @@
 [submodule "libspeex"]
 	path = libspeex
 	url = https://github.com/Bevara/libspeex.git
+[submodule "libalac"]
+	path = libalac
+	url = https://github.com/Bevara/libalac.git
+[submodule "libcodec2"]
+	path = libcodec2
+	url = https://github.com/Bevara/libcodec2.git
+[submodule "libdavs2"]
+	path = libdavs2
+	url = https://github.com/Bevara/libdavs2.git
+[submodule "libgsm"]
+	path = libgsm
+	url = https://github.com/Bevara/libgsm.git
+[submodule "liblc3"]
+	path = liblc3
+	url = https://github.com/Bevara/liblc3.git
+[submodule "libsbc"]
+	path = libsbc
+	url = https://github.com/Bevara/libsbc.git
+[submodule "libtta"]
+	path = libtta
+	url = https://github.com/Bevara/libtta.git
+[submodule "libuavs3d"]
+	path = libuavs3d
+	url = https://github.com/Bevara/libuavs3d.git
+[submodule "libxevd"]
+	path = libxevd
+	url = https://github.com/Bevara/libxevd.git
+[submodule "libutvideo"]
+	path = libutvideo
+	url = https://github.com/Bevara/libutvideo.git
+[submodule "libschro"]
+	path = libschro
+	url = https://github.com/Bevara/libschro.git
+[submodule "libg711"]
+	path = libg711
+	url = https://github.com/Bevara/libg711.git
+[submodule "libilbc"]
+	path = libilbc
+	url = https://github.com/Bevara/libilbc.git

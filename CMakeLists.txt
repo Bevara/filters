@@ -70,6 +70,19 @@ set(filters
   simpleimg
   libxcf
   libspeex
+  libg711
+  libalac
+  libgsm
+  libsbc
+  libtta
+  liblc3
+  libcodec2
+  libuavs3d
+  libdavs2
+  libxevd
+  libutvideo
+  libschro
+  libilbc
   libbpg
   libx264
   libx265
