@@ -86,6 +86,8 @@ set(filters
   rgbyuv
   btplay
   libbpg
+  h264bsd
+  ffmpeg-h26x
   libx264
   libx265
   liblame

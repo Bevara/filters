@@ -250,3 +250,9 @@
 [submodule "btplay"]
 	path = btplay
 	url = https://github.com/Bevara/btplay.git
+[submodule "h264bsd"]
+	path = h264bsd
+	url = https://github.com/Bevara/h264bsd.git
+[submodule "ffmpeg-h26x"]
+	path = ffmpeg-h26x
+	url = https://github.com/Bevara/ffmpeg-h26x.git
