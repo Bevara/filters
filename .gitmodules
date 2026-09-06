@@ -207,7 +207,7 @@
 	url = https://github.com/Bevara/libspeex.git
 [submodule "libalac"]
 	path = libalac
-	url = https://github.com/Bevara/libalac.git
+	url = https://github.com/Bevara/libalac
 [submodule "libcodec2"]
 	path = libcodec2
 	url = https://github.com/Bevara/libcodec2.git
