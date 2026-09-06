@@ -63,6 +63,12 @@ set(filters
   libape
   libmng
   libdjvu
+  libmupdf
+  libjxr
+  libpgf
+  libpsd
+  simpleimg
+  libxcf
   libbpg
   libx264
   libx265

@@ -184,3 +184,21 @@
 [submodule "libdjvu"]
 	path = libdjvu
 	url = https://github.com/Bevara/libdjvu.git
+[submodule "libmupdf"]
+	path = libmupdf
+	url = https://github.com/Bevara/libmupdf.git
+[submodule "libjxr"]
+	path = libjxr
+	url = https://github.com/Bevara/libjxr.git
+[submodule "libpgf"]
+	path = libpgf
+	url = https://github.com/Bevara/libpgf.git
+[submodule "libpsd"]
+	path = libpsd
+	url = https://github.com/Bevara/libpsd.git
+[submodule "libxcf"]
+	path = libxcf
+	url = https://github.com/Bevara/libxcf.git
+[submodule "simpleimg"]
+	path = simpleimg
+	url = https://github.com/Bevara/simpleimg.git

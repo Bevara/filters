@@ -258,6 +258,28 @@ copy_lib $build_path/third_parties/musepack libmpcdec.a $source_path/libmpc/lib/
 # speex and libtta are built by build_thirdparties.sh but have no filter yet -
 # see the note at the end of that script.
 
+# --- still-image formats whose library was already built but had no filter ---
+
+echo "Updating lib for filter libjxr"
+# libjxrglue holds the container parser and the format converter, libjpegxr the
+# codec; the filter links both.
+copy_lib $build_path/third_parties/jxrlib libjpegxr.a $source_path/libjxr/lib/
+copy_lib $build_path/third_parties/jxrlib libjxrglue.a $source_path/libjxr/lib/
+
+echo "Updating lib for filter libpgf"
+copy_lib $build_path/third_parties/pgf libpgf.a $source_path/libpgf/lib/
+
+echo "Updating lib for filter libpsd"
+copy_lib $build_path/third_parties/psd_sdk libpsd.a $source_path/libpsd/lib/
+
+echo "Updating lib for filter libxcf"
+# Not the xcf2png/xcf2pnm converters the main xcftools block builds, but the
+# core compiled into an archive by the "xcftools core" block.
+copy_lib $build_path/third_parties/xcftools-lib libxcftools.a $source_path/libxcf/lib/
+
+# simpleimg (PCX, TGA, SGI, PNM, XBM) has no third-party library: its decoders
+# are written in-tree in filters/simpleimg/simpleimg.c.
+
 # --- standalone DTS and Monkey's Audio decoders ---
 
 echo "Updating lib for filter libdca"
