@@ -91,6 +91,7 @@ set(filters
   h264bsd
   ffmpeg-h26x
   ffmpeg-ffv1
+  ffmpeg-g726
   libx264
   libx265
   liblame

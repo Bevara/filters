@@ -135,6 +135,10 @@ cp $source_path/third_parties/silk-v3-decoder/silk/libSKP_SILK_SDK.a $source_pat
 echo "Updating libs for filter libisac"
 cp $build_path/third_parties/isac/libisac.a $source_path/libisac/lib/
 
+# echo "Updating libs for filter ffmpeg-g726"
+# cp $build_path/third_parties/ffmpeg-g726/libavcodec/libavcodec.a $source_path/ffmpeg-g726/lib/
+# cp $build_path/third_parties/ffmpeg-g726/libavutil/libavutil.a $source_path/ffmpeg-g726/lib/
+
 # echo "Updating libs for filter ffmpeg-ffv1"
 # cp $build_path/third_parties/ffmpeg-ffv1/libavcodec/libavcodec.a $source_path/ffmpeg-ffv1/lib/
 # cp $build_path/third_parties/ffmpeg-ffv1/libavfilter/libavfilter.a $source_path/ffmpeg-ffv1/lib/
