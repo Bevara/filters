@@ -83,11 +83,14 @@ set(filters
   libutvideo
   libschro
   libilbc
+  libsilk
+  libisac
   rgbyuv
   btplay
   libbpg
   h264bsd
   ffmpeg-h26x
+  ffmpeg-ffv1
   libx264
   libx265
   liblame

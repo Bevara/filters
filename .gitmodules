@@ -256,3 +256,12 @@
 [submodule "ffmpeg-h26x"]
 	path = ffmpeg-h26x
 	url = https://github.com/Bevara/ffmpeg-h26x.git
+[submodule "libsilk"]
+	path = libsilk
+	url = https://github.com/Bevara/libsilk.git
+[submodule "libisac"]
+	path = libisac
+	url = https://github.com/Bevara/libisac.git
+[submodule "ffmpeg-ffv1"]
+	path = ffmpeg-ffv1
+	url = https://github.com/Bevara/ffmpeg-ffv1.git

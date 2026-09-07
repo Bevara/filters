@@ -129,6 +129,19 @@ copy_lib $build_path/third_parties/h264bsd libh264bsd.a $source_path/h264bsd/lib
 # failing hard if a lib is missing, so one missing/renamed third-party build
 # doesn't abort the whole update.
 
+echo "Updating libs for filter libsilk"
+cp $source_path/third_parties/silk-v3-decoder/silk/libSKP_SILK_SDK.a $source_path/libsilk/lib/
+
+echo "Updating libs for filter libisac"
+cp $build_path/third_parties/isac/libisac.a $source_path/libisac/lib/
+
+# echo "Updating libs for filter ffmpeg-ffv1"
+# cp $build_path/third_parties/ffmpeg-ffv1/libavcodec/libavcodec.a $source_path/ffmpeg-ffv1/lib/
+# cp $build_path/third_parties/ffmpeg-ffv1/libavfilter/libavfilter.a $source_path/ffmpeg-ffv1/lib/
+# cp $build_path/third_parties/ffmpeg-ffv1/libavformat/libavformat.a $source_path/ffmpeg-ffv1/lib/
+# cp $build_path/third_parties/ffmpeg-ffv1/libavutil/libavutil.a $source_path/ffmpeg-ffv1/lib/
+# cp $build_path/third_parties/ffmpeg-ffv1/libswscale/libswscale.a $source_path/ffmpeg-ffv1/lib/
+
 echo "Updating lib for filter libx264 (native encoder, not ffmpeg-x264)"
 cp $build_path/third_parties/out/lib/libx264.a $source_path/libx264/lib/
 
