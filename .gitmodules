@@ -268,3 +268,6 @@
 [submodule "ffmpeg-g726"]
 	path = ffmpeg-g726
 	url = https://github.com/Bevara/ffmpeg-g726.git
+[submodule "ffmpeg-vc2"]
+	path = ffmpeg-vc2
+	url = https://github.com/Bevara/ffmpeg-vc2.git
