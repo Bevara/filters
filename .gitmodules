@@ -271,3 +271,6 @@
 [submodule "ffmpeg-vc2"]
 	path = ffmpeg-vc2
 	url = https://github.com/Bevara/ffmpeg-vc2.git
+[submodule "flvdmx"]
+	path = flvdmx
+	url = https://github.com/Bevara/flvdmx.git

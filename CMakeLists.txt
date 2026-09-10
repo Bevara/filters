@@ -29,8 +29,9 @@ set(filters
   ogg
   bifsdec
   libxvid
-  avidmx
-  libfaad
+   avidmx
+   flvdmx
+   libfaad
   libflac
   libaif
   libopus
