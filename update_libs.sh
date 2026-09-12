@@ -395,9 +395,6 @@ copy_lib $build_path/third_parties/monkeys-audio libmac.a $source_path/libape/li
 # MAC/All.h, so the filter needs a copy of it next to its headers.
 cp $build_path/third_parties/monkeys-audio/config.h $source_path/libape/include/ 2>/dev/null
 
-echo "Updating lib for filter libflv"
-copy_lib $build_path/third_parties/libflv libflv.a $source_path/libflv/lib/
-
 echo "Updating lib for filter libmng"
 copy_lib $build_path/third_parties/libmng libmng.a $source_path/libmng/lib/
 # JNG frames are JPEG, so the filter links libjpeg too and needs its headers -
