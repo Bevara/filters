@@ -274,3 +274,6 @@
 [submodule "flvdmx"]
 	path = flvdmx
 	url = https://github.com/Bevara/flvdmx.git
+[submodule "libfaac"]
+	path = libfaac
+	url = https://github.com/Bevara/libfaac.git

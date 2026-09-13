@@ -97,6 +97,7 @@ set(filters
   libx264
   libx265
   liblame
+  libfaac
   libopusenc
 )
 

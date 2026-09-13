@@ -157,6 +157,9 @@ cp $build_path/third_parties/out/lib/libx264.a $source_path/libx264/lib/
 echo "Updating lib for filter libx265"
 cp $build_path/third_parties/x265_git/libx265.a $source_path/libx265/lib/
 
+echo "Updating lib for filter libfaac"
+copy_lib $build_path/third_parties/faac libfaac.a $source_path/libfaac/lib/
+
 echo "Updating lib for filter liblame"
 cp $build_path/third_parties/lame-4.0/libmp3lame/.libs/libmp3lame.a $source_path/liblame/lib/
 
