@@ -180,6 +180,9 @@ copy_lib $build_path/third_parties/libaom libaom_version.a $source_path/libaom/l
 echo "Updating lib for filter libde265"
 copy_lib $build_path/third_parties/libde265 libde265.a $source_path/libde265/lib/
 
+echo "Updating lib for filter libdav2d"
+copy_lib $build_path/third_parties/dav2d libdav2d.a $source_path/libdav2d/lib/
+
 echo "Updating lib for filter libOpenVVC"
 copy_lib $build_path/third_parties/vvdec libvvdec.a $source_path/libOpenVVC/lib/
 
