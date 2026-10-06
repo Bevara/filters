@@ -277,3 +277,6 @@
 [submodule "libfaac"]
 	path = libfaac
 	url = https://github.com/Bevara/libfaac.git
+[submodule "libdav2d"]
+	path = libdav2d
+	url = https://github.com/Bevara/libdav2d.git
