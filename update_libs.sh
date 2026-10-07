@@ -74,10 +74,12 @@ copy_lib() {
     fi
 }
 
-echo "Updating libs for filter isobmff"
-cp $build_path/third_parties/ffmpeg-dmx/libavcodec/libavcodec.a $source_path/isobmff/lib/
-cp $build_path/third_parties/ffmpeg-dmx/libavformat/libavformat.a $source_path/isobmff/lib/
-cp $build_path/third_parties/ffmpeg-dmx/libavutil/libavutil.a $source_path/isobmff/lib/
+# The ffmpeg-dmx block is commented out in build_thirdparties.sh, and
+# isobmff/CMakeLists.txt does not link these archives anyway.
+# echo "Updating libs for filter isobmff"
+# cp $build_path/third_parties/ffmpeg-dmx/libavcodec/libavcodec.a $source_path/isobmff/lib/
+# cp $build_path/third_parties/ffmpeg-dmx/libavformat/libavformat.a $source_path/isobmff/lib/
+# cp $build_path/third_parties/ffmpeg-dmx/libavutil/libavutil.a $source_path/isobmff/lib/
 
 echo "Updating lib for filter liba52"
 cp $build_path/third_parties/liba52/liba52/.libs/liba52.a $source_path/liba52/lib/
