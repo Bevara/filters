@@ -41,7 +41,7 @@ set(filters
   libde265
   libOpenVVC
   libaom
-  libdav2d
+  #libdav2d
   webmdmx
   avif
   libvpx
